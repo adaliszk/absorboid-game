@@ -51,7 +51,7 @@ jobs:
           godot --headless --verbose --export-release "${{ matrix.export }}" build/${{ matrix.export }}/${{ matrix.output }}
       -
         name: 📁 Upload Artifact
-        uses: actions/upload-artifact@v1
+        uses: actions/upload-artifact@v3
         with:
           name: ${{ matrix.export }}-v${GITHUB_RUN_NUMBER}
-          path: build/${{ matrix.export }}
+          path: build/${{ matrix.export }}/**/*
