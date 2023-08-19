@@ -51,6 +51,7 @@ jobs:
         name: 🤖 Setup Project
         run: |
           echo "Build#${{ github.run_number }}" > git_version.txt
+          mkdir -p build/${{ matrix.export }}
       -
         name: 🔬 Verify Setup
         run: |
