@@ -15,7 +15,6 @@ jobs:
 
   build:
     name: "Build"
-    runs-on: ${{ matrix.os}}
     strategy:
       matrix:
         export: [web, windows, mac]
@@ -27,9 +26,11 @@ jobs:
             output: game.exe
             os: windows-latest
           - export: mac
-            output: game.app
+            output: game.dmg
+            os: macos-latest
     container:
       image: barichello/godot-ci:${GODOT_VERSION}
+    runs-on: ${{ matrix.os}}
     steps:
       - name: Checkout
         uses: actions/checkout@v2
