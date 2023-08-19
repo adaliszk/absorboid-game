@@ -9,3 +9,6 @@
 # System files
 .DS_Store
 **/*.tmp
+
+# Generated files
+git_version.txt
