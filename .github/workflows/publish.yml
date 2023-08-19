@@ -48,7 +48,7 @@ jobs:
       -
         name: 🦺 Build Export
         run: |
-          godot -v --export "${{ matrix.export }}" build/${{ matrix.export }}/${{ matrix.output }}
+          godot --verbose --export-release "${{ matrix.export }}" build/${{ matrix.export }}/${{ matrix.output }}
       -
         name: 📁 Upload Artifact
         uses: actions/upload-artifact@v1
