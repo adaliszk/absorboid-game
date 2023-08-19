@@ -73,19 +73,22 @@ jobs:
           path: ./build/${{ matrix.export }}/*
 
   publish:
-    name: "Itch.io"
+    name: "Publish"
     needs: build
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        export: [web, windows, mac]
+        channel: [html5, windows, mac]
         include:
-          - export: web
-            channel: webgl
-          - export: windows
+          -
+            channel: html5
+            export: web
+          -
             channel: windows
-          - export: mac
+            export: windows
+          -
             channel: mac
+            export: mac
     steps:
       -
         name: 🤖 Setup Project
@@ -97,7 +100,11 @@ jobs:
         with:
           name: ${{ matrix.export }}-v${{ github.run_number }}
       -
-        name: Publish
+        name: 🔬 Verify Files
+        run: |
+          ls -la ./build/${{ matrix.export }}
+      -
+        name: 🤖 Publish
         uses: KikimoraGames/itch-publish@v0.0.3
         with:
           butlerApiKey: ${{ secrets.ITCH_API_KEY }}
