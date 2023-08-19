@@ -1,5 +1,6 @@
 name: "Publish"
 
+
 on:
   workflow_dispatch: {}
   pull_request: {}
@@ -7,6 +8,12 @@ on:
     branches:
       - release
       - develop
+
+
+defaults:
+  run:
+    shell: bash
+
 
 jobs:
 
@@ -33,7 +40,7 @@ jobs:
           lfs: true
       -
         name: 🤖 Setup Godot
-        uses: chickensoft-games/setup-godot@v1
+        uses: paulloz/godot-action@v1.2.2
         with:
           version: 4.1.1
       -
@@ -52,7 +59,7 @@ jobs:
       -
         name: 🔬 Verify Files
         run: |
-          tree ./build
+          ls -la ./build/${{ matrix.export }}
       -
         name: 📁 Upload Artifact
         uses: actions/upload-artifact@v3
