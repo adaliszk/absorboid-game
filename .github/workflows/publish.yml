@@ -71,3 +71,38 @@ jobs:
         with:
           name: ${{ matrix.export }}-v${{ github.run_number }}
           path: ./build/${{ matrix.export }}/*
+
+  publish:
+    name: "Itch.io"
+    needs: build
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        export: [web, windows, mac]
+        include:
+          - export: web
+            channel: webgl
+          - export: windows
+            channel: windows
+          - export: mac
+            channel: mac
+    steps:
+      -
+        name: 🤖 Setup Project
+        run: |
+          mkdir -p build/${{ matrix.export }}
+      -
+        name: 📁 Download Artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: ${{ matrix.export }}-v${{ github.run_number }}
+      -
+        name: Publish
+        uses: KikimoraGames/itch-publish@v0.0.3
+        with:
+          butlerApiKey: ${{ secrets.ITCH_API_KEY }}
+          gameData: ./build/${{ matrix.export }}
+          itchUsername: ${{ secrets.ITCH_USERNAME }}
+          itchGameId: ${{ secrets.ITCH_GAME_ID }}
+          buildChannel: ${{ matrix.channel }}
+          buildNumber: ${{ github.run_number }}
