@@ -52,10 +52,10 @@ jobs:
       -
         name: 🔬 Verify Files
         run: |
-          tree build/${{ matrix.export }}
+          tree ./build
       -
         name: 📁 Upload Artifact
         uses: actions/upload-artifact@v3
         with:
           name: ${{ matrix.export }}-v${{ github.run_number }}
-          path: build/${{ matrix.export }}/*
+          path: ./build/${{ matrix.export }}/*
