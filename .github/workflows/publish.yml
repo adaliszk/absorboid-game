@@ -1,4 +1,4 @@
-name: "Build & Publish"
+name: "Publish"
 
 on:
   workflow_dispatch: {}
@@ -12,13 +12,24 @@ env:
   GODOT_VERSION: 4.1.1
 
 jobs:
+
   build:
-    runs-on: ubuntu-latest
+    name: "Build"
+    runs-on: ${{ matrix.os}}
     strategy:
       matrix:
         export: [web, windows, mac]
+        include:
+          - export: web
+            output: index.html
+            os: ubuntu-latest
+          - export: windows
+            output: game.exe
+            os: windows-latest
+          - export: mac
+            output: game.app
     container:
-      image: barichello/godot-ci:4.1.1
+      image: barichello/godot-ci:${GODOT_VERSION}
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -35,7 +46,8 @@ jobs:
           echo "Build#${GITHUB_RUN_NUMBER}" > git_version.txt
       -
         name: Build Export
-        run: godot -v --export "${{ matrix.export }}"
+        run: |
+          godot -v --export "${{ matrix.export }}" build/${{ matrix.export }}/${{ matrix.output }}
       -
         name: Upload Artifact
         uses: actions/upload-artifact@v1
