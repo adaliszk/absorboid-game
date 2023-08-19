@@ -12,3 +12,7 @@
 
 # Generated files
 git_version.txt
+
+# Build files
+build/web/*
+build/*.zip

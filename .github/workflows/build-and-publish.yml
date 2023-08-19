@@ -1,0 +1,44 @@
+name: "Build & Publish"
+
+on:
+  workflow_dispatch: {}
+  pull_request: {}
+  push:
+    branches:
+      - release
+      - develop
+
+env:
+  GODOT_VERSION: 4.1.1
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        export: [web, windows, mac]
+    container:
+      image: barichello/godot-ci:4.1.1
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          lfs: true
+      -
+        name: Setup Godot
+        run: |
+          mkdir -v -p ~/.local/share/godot/templates
+          mv /root/.local/share/godot/templates/${GODOT_VERSION}.stable ~/.local/share/godot/templates/${GODOT_VERSION}.stable
+      -
+        name: Setup Project
+        run: |
+          echo "Build#${GITHUB_RUN_NUMBER}" > git_version.txt
+      -
+        name: Build Export
+        run: godot -v --export "${{ matrix.export }}"
+      -
+        name: Upload Artifact
+        uses: actions/upload-artifact@v1
+        with:
+          name: ${{ matrix.export }}-v${GITHUB_RUN_NUMBER}
+          path: build/${{ matrix.export }}
