@@ -15,4 +15,6 @@ git_version.txt
 
 # Build files
 build/**/*
-!build/**/.gitkeep
+
+# Exceptions
+!**/.gitkeep
