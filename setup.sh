@@ -6,10 +6,14 @@ if [[ -f ".git/PROJECT_INITIALIZED" ]]; then
 fi
 
 SCRIPT="git describe --tags --abbrev=0 2>/dev/null || git rev-parse --short HEAD > git_version.txt"
-echo "${SCRIPT}" >> ".git/hooks/update-git-version"
+echo "${SCRIPT}" >> ".git/hooks/update-git-version.sh"
 
-echo "bash -c .git/hooks/update-git-version" >> ".git/hooks/post-checkout"
-echo "bash -c .git/hooks/update-git-version" >> ".git/hooks/post-commit"
+echo ".git/hooks/update-git-version.sh" >> ".git/hooks/post-checkout"
+echo ".git/hooks/update-git-version.sh" >> ".git/hooks/post-commit"
 
-bash -c .git/hooks/update-git-version
+mkdir -p build/web
+mkdir -p build/windows
+mkdir -p build/mac
+
+.git/hooks/update-git-version.sh
 touch .git/PROJECT_INITIALIZED
