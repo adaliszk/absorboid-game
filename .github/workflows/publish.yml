@@ -42,7 +42,7 @@ jobs:
         name: 🤖 Setup Godot
         uses: paulloz/godot-action@v1.2.2
         with:
-          version: 4.1.1
+          version: 4.1
       -
         name: 🤖 Setup Project
         run: |
