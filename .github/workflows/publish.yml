@@ -39,7 +39,7 @@ jobs:
       -
         name: 🤖 Setup Project
         run: |
-          echo "Build#${GITHUB_RUN_NUMBER}" > git_version.txt
+          echo "Build#${{ github.run_number }}" > git_version.txt
       -
         name: 🔬 Verify Setup
         run: |
@@ -50,8 +50,12 @@ jobs:
         run: |
           godot --headless --verbose --export-release "${{ matrix.export }}" build/${{ matrix.export }}/${{ matrix.output }}
       -
+        name: 🔬 Verify Files
+        run: |
+          tree build/${{ matrix.export }}
+      -
         name: 📁 Upload Artifact
         uses: actions/upload-artifact@v3
         with:
-          name: ${{ matrix.export }}-v${GITHUB_RUN_NUMBER}
+          name: ${{ matrix.export }}-v${{ github.run_number }}
           path: build/${{ matrix.export }}/*
