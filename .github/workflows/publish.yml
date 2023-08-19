@@ -28,7 +28,7 @@ jobs:
     runs-on: ${{ matrix.os}}
     steps:
       - name: 🧾 Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           lfs: true
       -
@@ -54,4 +54,4 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: ${{ matrix.export }}-v${GITHUB_RUN_NUMBER}
-          path: build/${{ matrix.export }}/**/*
+          path: build/${{ matrix.export }}/*
