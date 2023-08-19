@@ -1,6 +1,5 @@
 name: "Publish"
 
-
 on:
   workflow_dispatch: {}
   pull_request: {}
@@ -8,6 +7,10 @@ on:
     branches:
       - release
       - develop
+
+env:
+  DOTNET_CLI_TELEMETRY_OPTOUT: true
+  DOTNET_NOLOGO: true
 
 
 defaults:
@@ -40,9 +43,10 @@ jobs:
           lfs: true
       -
         name: 🤖 Setup Godot
-        uses: paulloz/godot-action@v1.2.2
+        uses: chickensoft-games/setup-godot@v1
         with:
-          version: 4.1
+          use-dotnet: false
+          version: 4.1.1
       -
         name: 🤖 Setup Project
         run: |
