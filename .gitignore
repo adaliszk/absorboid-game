@@ -1,0 +1,11 @@
+# Editors
+.idea
+.vscode
+
+# Godot Engine
+.import
+.godot
+
+# System files
+.DS_Store
+**/*.tmp
