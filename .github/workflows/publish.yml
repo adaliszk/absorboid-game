@@ -50,13 +50,13 @@ jobs:
       -
         name: 🤖 Setup Project
         run: |
-          echo "Build#${{ github.run_number }}" > git_version.txt
+          ./setup-git-version.sh
           mkdir -p build/${{ matrix.export }}
       -
         name: 🔬 Verify Setup
         run: |
+          cat git_version.gd
           godot --version
-          cat git_version.txt
       -
         name: 🦺 Build Export
         run: |
@@ -103,9 +103,9 @@ jobs:
         name: 🤖 Publish
         uses: KikimoraGames/itch-publish@v0.0.3
         with:
-          butlerApiKey: ${{ secrets.ITCH_API_KEY }}
           gameData: .
           itchUsername: ${{ secrets.ITCH_USERNAME }}
           itchGameId: ${{ secrets.ITCH_GAME_ID }}
+          butlerApiKey: ${{ secrets.ITCH_API_KEY }}
           buildChannel: ${{ matrix.channel }}
           buildNumber: ${{ github.run_number }}
