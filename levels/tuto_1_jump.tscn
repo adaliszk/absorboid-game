@@ -1,0 +1,91 @@
+[gd_scene load_steps=7 format=3 uid="uid://c8tnd5y5e23i0"]
+
+[ext_resource type="TileSet" uid="uid://dx2d4lqdb7qg2" path="res://game/assets/sandbox_packed.tres" id="1_33050"]
+[ext_resource type="PackedScene" uid="uid://c3e7l126blnup" path="res://game/entities/Player.tscn" id="2_na0q3"]
+[ext_resource type="PackedScene" uid="uid://dq7hdnxtl2ru" path="res://game/interactables/ColorChanger.tscn" id="3_qblxl"]
+[ext_resource type="PackedScene" uid="uid://cdltiu2pshqsp" path="res://ui/components/TooltipBubble/TooltipBubble.tscn" id="3_v11mw"]
+[ext_resource type="PackedScene" uid="uid://c8tiu4yx6b378" path="res://game/traits/ShowOnlyForDebug.tscn" id="4_lm4yu"]
+[ext_resource type="PackedScene" uid="uid://rynss7452c7m" path="res://game/traits/SetContentWith.tscn" id="5_i7v86"]
+
+[node name="Tuto1jump" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource("1_33050")
+format = 2
+layer_0/tile_data = PackedInt32Array(2228237, 65537, 2, 2293773, 65537, 2, 2359309, 65537, 2, 2424845, 65537, 2, 2490381, 65537, 2, 2555917, 65537, 2, 2555916, 65537, 2, 2555915, 65537, 2, 2555914, 65537, 2, 2555913, 65537, 2, 2555912, 65537, 2, 2555911, 65537, 2, 2555910, 65537, 2, 2555909, 65537, 2, 2555908, 65537, 2, 2555907, 65537, 2, 2555906, 65537, 2, 2555905, 65537, 2, 2555904, 65537, 2, 2490368, 65537, 2, 2424832, 65537, 2, 2359296, 65537, 2, 2293760, 65537, 2, 2228224, 65537, 2, 2162688, 65537, 2, 2097152, 65537, 2, 2031616, 65537, 2, 1966080, 65537, 2, 1900544, 65537, 2, 1835008, 65537, 2, 1769472, 65537, 2, 1703936, 65537, 2, 1638400, 65537, 2, 1572864, 65537, 2, 1507328, 65537, 2, 1441792, 65537, 2, 1376256, 65537, 2, 1310720, 65537, 2, 1245184, 65537, 2, 1179648, 65537, 2, 1114112, 65537, 2, 1048576, 65537, 2, 983040, 65537, 2, 917504, 65537, 2, 851968, 65537, 2, 786432, 65537, 2, 720896, 65537, 2, 655360, 65537, 2, 589824, 65537, 2, 524288, 65537, 2, 458752, 65537, 2, 393216, 65537, 2, 327680, 65537, 2, 262144, 65537, 2, 196608, 65537, 2, 131072, 65537, 2, 65536, 65537, 2, 0, 65537, 2, 1, 65537, 2, 2, 65537, 2, 3, 65537, 2, 4, 65537, 2, 5, 65537, 2, 6, 65537, 2, 7, 65537, 2, 8, 65537, 2, 9, 65537, 2, 10, 65537, 2, 11, 65537, 2, 12, 65537, 2, 13, 65537, 2, 14, 65537, 2, 15, 65537, 2, 16, 65537, 2, 17, 65537, 2, 18, 65537, 2, 19, 65537, 2, 20, 65537, 2, 21, 65537, 2, 22, 65537, 2, 23, 65537, 2, 24, 65537, 2, 25, 65537, 2, 26, 65537, 2, 27, 65537, 2, 28, 65537, 2, 29, 65537, 2, 30, 65537, 2, 31, 65537, 2, 32, 65537, 2, 33, 65537, 2, 34, 65537, 2, 35, 65537, 2, 36, 65537, 2, 37, 65537, 2, 38, 65537, 2, 39, 65537, 2, 40, 65537, 2, 41, 65537, 2, 42, 65537, 2, 43, 65537, 2, 44, 65537, 2, 45, 65537, 2, 46, 65537, 2, 47, 65537, 2, 48, 65537, 2, 49, 65537, 2, 50, 65537, 2, 51, 65537, 2, 52, 65537, 2, 53, 65537, 2, 54, 65537, 2, 55, 65537, 2, 56, 65537, 2, 57, 65537, 2, 58, 65537, 2, 59, 65537, 2, 65595, 65537, 2, 131131, 65537, 2, 196667, 65537, 2, 262203, 65537, 2, 327739, 65537, 2, 393275, 65537, 2, 458811, 65537, 2, 524347, 65537, 2, 589883, 65537, 2, 655419, 65537, 2, 720955, 65537, 2, 786491, 65537, 2, 852027, 65537, 2, 917563, 65537, 2, 983099, 65537, 2, 1048635, 65537, 2, 1114171, 65537, 2, 1179707, 65537, 2, 1245243, 65537, 2, 1310779, 65537, 2, 1376315, 65537, 2, 1441851, 65537, 2, 1507387, 65537, 2, 1572923, 65537, 2, 1638459, 65537, 2, 1703995, 65537, 2, 1769531, 65537, 2, 1835067, 65537, 2, 1900603, 65537, 2, 1966139, 65537, 2, 2031675, 65537, 2, 2097211, 65537, 2, 2162747, 65537, 2, 2228283, 65537, 2, 2293819, 65537, 2, 2359355, 65537, 2, 2424891, 65537, 2, 2490427, 65537, 2, 2555963, 65537, 2, 2555962, 65537, 2, 2555961, 65537, 2, 2555960, 65537, 2, 2555959, 65537, 2, 2555958, 65537, 2, 2555957, 65537, 2, 2555956, 65537, 2, 2555955, 65537, 2, 2555954, 65537, 2, 2555953, 65537, 2, 2555952, 65537, 2, 2555951, 65537, 2, 2555950, 65537, 2, 2555949, 65537, 2, 2555948, 65537, 2, 2555947, 65537, 2, 2555946, 65537, 2, 2555945, 65537, 2, 2555944, 65537, 2, 2555943, 65537, 2, 2555942, 65537, 2, 2555941, 65537, 2, 2555940, 65537, 2, 2555939, 65537, 2, 2555938, 65537, 2, 2555937, 65537, 2, 2555936, 65537, 2, 2555935, 65537, 2, 2555934, 65537, 2, 2555933, 65537, 2, 2555932, 65537, 2, 2555931, 65537, 2, 2555930, 65537, 2, 2555929, 65537, 2, 2555928, 65537, 2, 2555927, 65537, 2, 2555926, 65537, 2, 2555925, 65537, 2, 2490389, 65537, 2, 2424853, 65537, 2, 2359317, 65537, 2, 2293781, 65537, 2, 2228245, 65537, 2, 2228238, 65537, 2, 2293774, 65537, 2, 2359310, 65537, 2, 2424846, 65537, 2, 2490382, 65537, 2, 2555918, 65537, 2, 2555919, 65537, 2, 2490383, 65537, 2, 2424847, 65537, 2, 2359311, 65537, 2, 2293775, 65537, 2, 2228239, 65537, 2, 2228240, 65537, 2, 2293776, 65537, 2, 2359312, 65537, 2, 2424848, 65537, 2, 2490384, 65537, 2, 2555920, 65537, 2, 2555921, 65537, 2, 2490385, 65537, 2, 2424849, 65537, 2, 2359313, 65537, 2, 2293777, 65537, 2, 2228241, 65537, 2, 2228242, 65537, 2, 2293778, 65537, 2, 2359314, 65537, 2, 2424850, 65537, 2, 2490386, 65537, 2, 2555922, 65537, 2, 2555923, 65537, 2, 2490387, 65537, 2, 2424851, 65537, 2, 2359315, 65537, 2, 2293779, 65537, 2, 2228243, 65537, 2, 2228244, 65537, 2, 2293780, 65537, 2, 2359316, 65537, 2, 2424852, 65537, 2, 2490388, 65537, 2, 2555924, 65537, 2, 2228246, 1, 0, 2228247, 1, 0, 2228248, 1, 0, 2228249, 1, 0, 2228250, 1, 0, 2228251, 1, 0, 1966108, 1, 0, 1966109, 1, 0, 1966110, 1, 0, 1966111, 1, 0, 1966112, 1, 0, 1966113, 1, 0, 1703970, 1, 0, 1703971, 1, 0, 1703972, 1, 0, 1703973, 1, 0, 1703974, 1, 0, 1703975, 1, 0, 1441832, 1, 0, 1441833, 1, 0, 1441834, 1, 0, 1441835, 1, 0, 1441836, 1, 0, 1441837, 1, 0, 1179694, 1, 0, 1179695, 1, 0, 1179696, 1, 0, 1179697, 1, 0, 1179698, 1, 0, 1179699, 1, 0, 917556, 1, 0, 917557, 1, 0, 917558, 1, 0, 917559, 1, 0, 917560, 1, 0, 917561, 1, 0)
+
+[node name="redChanger1" parent="TileMap" instance=ExtResource("3_qblxl")]
+position = Vector2(280, 424)
+collision_layer = 1
+collision_mask = 1
+color = 1
+
+[node name="TooltipBubble" parent="TileMap/redChanger1" instance=ExtResource("3_v11mw")]
+visible = false
+anchors_preset = 2
+anchor_left = 0.0
+anchor_top = 1.0
+anchor_right = 0.0
+anchor_bottom = 1.0
+offset_left = -83.0
+offset_right = 83.0
+theme_override_constants/margin_top = 72
+offset = 0.0
+tooltip = "{debug}"
+direction = 2
+
+[node name="ShowOnlyForDebug" parent="TileMap/redChanger1/TooltipBubble" instance=ExtResource("4_lm4yu")]
+layout_mode = 2
+
+[node name="SetContentWith" parent="TileMap/redChanger1/TooltipBubble" node_paths=PackedStringArray("content", "target") instance=ExtResource("5_i7v86")]
+layout_mode = 2
+content = NodePath("..")
+target = NodePath("../..")
+
+[node name="color_name" type="Label" parent="TileMap/redChanger1/TooltipBubble/SetContentWith"]
+layout_mode = 0
+offset_left = 100.0
+offset_top = -261.0
+offset_right = 140.0
+offset_bottom = -238.0
+
+[node name="Player" parent="." instance=ExtResource("2_na0q3")]
+position = Vector2(156, 211)
+
+[node name="TooltipBubble" parent="Player" instance=ExtResource("3_v11mw")]
+anchors_preset = 9
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 1.0
+grow_horizontal = 1
+theme_override_constants/margin_bottom = 128
+offset = 56.0
+tooltip = "{debug}"
+
+[node name="ShowOnlyForDebug" parent="Player/TooltipBubble" instance=ExtResource("4_lm4yu")]
+layout_mode = 2
+
+[node name="SetContentWith" parent="Player/TooltipBubble" node_paths=PackedStringArray("content", "target") instance=ExtResource("5_i7v86")]
+layout_mode = 2
+content = NodePath("..")
+target = NodePath("../..")
+
+[node name="color_name" type="Label" parent="Player/TooltipBubble/SetContentWith"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="move_velocity" type="Label" parent="Player/TooltipBubble/SetContentWith"]
+layout_mode = 0
+offset_left = 163.5
+offset_top = 256.0
+offset_right = 203.5
+offset_bottom = 279.0
+
+[node name="dash_energy" type="Label" parent="Player/TooltipBubble/SetContentWith"]
+layout_mode = 0
+offset_left = 163.5
+offset_top = 256.0
+offset_right = 203.5
+offset_bottom = 279.0
