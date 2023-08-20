@@ -50,8 +50,9 @@ jobs:
       -
         name: 🤖 Setup Project
         run: |
-          ./setup-git-version.sh
           mkdir -p build/${{ matrix.export }}
+          chmod +x *.sh
+          ./setup-git-version.sh
       -
         name: 🔬 Verify Setup
         run: |

@@ -13,4 +13,4 @@ mkdir -p build/windows
 mkdir -p build/mac
 
 touch .git/PROJECT_INITIALIZED
-setup-git-version.sh
+./setup-git-version.sh
