@@ -1,6 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dsmciywhumntn"]
+[gd_scene load_steps=7 format=3 uid="uid://dsmciywhumntn"]
 
-[ext_resource type="Script" path="res://ui/actions/SwitchToLastScene.gd" id="1_3a0fx"]
+[ext_resource type="Script" path="res://ui/actions/SetKeyMapping.gd" id="1_dplg0"]
+[ext_resource type="Script" path="res://ui/scripts/RenderLabelContent.gd" id="2_xhusw"]
+[ext_resource type="Script" path="res://ui/actions/SwitchToScene.gd" id="3_1n0fq"]
 [ext_resource type="PackedScene" path="res://ui/BottomPanel.tscn" id="5_8wutw"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_788t1"]
@@ -59,6 +61,7 @@ theme_override_constants/separation = 32
 theme_override_styles/separator = SubResource("StyleBoxEmpty_788t1")
 
 [node name="SoundVolume" type="HBoxContainer" parent="Viewport/Screen/Layout"]
+visible = false
 layout_mode = 2
 theme_override_constants/separation = 4
 
@@ -100,13 +103,9 @@ text = "Keyboard Layout"
 [node name="OptionButton" type="OptionButton" parent="Viewport/Screen/Layout/KeyboardLayout"]
 layout_mode = 2
 size_flags_horizontal = 3
-item_count = 2
 selected = 0
 allow_reselect = true
-popup/item_0/text = "QWERTY"
-popup/item_0/id = 0
-popup/item_1/text = "AZERTY"
-popup/item_1/id = 1
+script = ExtResource("1_dplg0")
 
 [node name="VSeparator" type="VSeparator" parent="Viewport/Screen/Layout/KeyboardLayout"]
 layout_mode = 2
@@ -139,21 +138,25 @@ theme_override_constants/v_separation = 4
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "{input:move_left}: Move Left"
+script = ExtResource("2_xhusw")
 
 [node name="MOVE_RIGHT" type="Label" parent="Viewport/Screen/Layout/KeyboardHint/GridContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "{input:move_right}: Move Right"
+script = ExtResource("2_xhusw")
 
 [node name="MOVE_JUMP" type="Label" parent="Viewport/Screen/Layout/KeyboardHint/GridContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "{input:move_jump}: Jump from the ground, or double-jump in the air"
+script = ExtResource("2_xhusw")
 
 [node name="MOVE_DASH" type="Label" parent="Viewport/Screen/Layout/KeyboardHint/GridContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "{input:move_dash}: Dash in the direction of the movement"
+script = ExtResource("2_xhusw")
 
 [node name="HSeparator2" type="HSeparator" parent="Viewport/Screen/Layout"]
 layout_mode = 2
@@ -167,6 +170,11 @@ layout_mode = 2
 custom_minimum_size = Vector2(96, 48)
 layout_mode = 2
 text = "Back"
-script = ExtResource("1_3a0fx")
+script = ExtResource("3_1n0fq")
 
 [node name="BottomPanel" parent="." instance=ExtResource("5_8wutw")]
+
+[connection signal="item_applied" from="Viewport/Screen/Layout/KeyboardLayout/OptionButton" to="Viewport/Screen/Layout/KeyboardHint/GridContainer/MOVE_LEFT" method="render"]
+[connection signal="item_applied" from="Viewport/Screen/Layout/KeyboardLayout/OptionButton" to="Viewport/Screen/Layout/KeyboardHint/GridContainer/MOVE_RIGHT" method="render"]
+[connection signal="item_applied" from="Viewport/Screen/Layout/KeyboardLayout/OptionButton" to="Viewport/Screen/Layout/KeyboardHint/GridContainer/MOVE_DASH" method="render"]
+[connection signal="item_applied" from="Viewport/Screen/Layout/KeyboardLayout/OptionButton" to="Viewport/Screen/Layout/KeyboardHint/GridContainer/MOVE_JUMP" method="render"]

@@ -59,7 +59,7 @@ func switch_color(index: Game.ColorIndex) -> void:
 
 func handle_inputs(delta) -> void:
 	# JUMP and DOUBLE-JUMP Action
-	if Input.is_action_just_pressed("move_jump"):
+	if KeyMapping.is_jump_pressed():
 		if is_on_floor():
 			velocity.y = JUMP_VELOCITY
 			jump.emit(velocity)
@@ -69,11 +69,11 @@ func handle_inputs(delta) -> void:
 			jump.emit(velocity)
 
 	# MOVE Action
-	var direction = Input.get_vector("move_left", "move_right", "move_up", "move_down").normalized()
+	var direction = KeyMapping.get_vector().normalized()
 	move_velocity = direction * SPEED if direction else Vector2.ZERO
 
 	# DASH Action
-	if Input.is_action_just_pressed("move_dash") and color_index != Game.ColorIndex.Default:
+	if KeyMapping.is_dash_pressed() and color_index != Game.ColorIndex.Default:
 		Log.debug("dash:%s" % direction)
 		switch_color(Game.ColorIndex.Default)
 		dash_direction = direction.x
