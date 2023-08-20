@@ -1,7 +1,17 @@
 [gd_scene load_steps=7 format=3 uid="uid://ca7cfbyv3mpst"]
 
+<<<<<<< HEAD
+[ext_resource type="PackedScene" path="res://ui/BottomPanel.tscn" id="1_6oece"]
+[ext_resource type="Script" path="res://ui/scripts/RenderLabelContent.gd" id="1_f5gxf"]
+[ext_resource type="Script" path="res://ui/actions/SwitchToScene.gd" id="2_attn7"]
+[ext_resource type="Script" path="res://ui/actions/QuitGame.gd" id="2_dhvic"]
+[ext_resource type="PackedScene" uid="uid://b18l1f52smrku" path="res://ui/traits/HideOnWebPlatform.tscn" id="3_i0337"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_788t1"]
+=======
 [ext_resource type="PackedScene" uid="uid://dmwloprpiyah0" path="res://ui/BottomPanel.tscn" id="1_6oece"]
 [ext_resource type="Script" path="res://ui/scripts/data/PrintGameName.gd" id="1_7f72w"]
+>>>>>>> c903a9a (added attempt one at a layered tilemap)
 
 [node name="Main" type="Control"]
 layout_mode = 3
