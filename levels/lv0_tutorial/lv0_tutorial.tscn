@@ -1,0 +1,33 @@
+[gd_scene load_steps=2 format=3 uid="uid://cmnsrttgio043"]
+
+[ext_resource type="Script" path="res://ui/actions/SwitchToScene.gd" id="1_dsmho"]
+
+[node name="Lv0_Tutorial" type="Node2D"]
+
+[node name="Placeholder" type="CanvasLayer" parent="."]
+
+[node name="Layout" type="VBoxContainer" parent="Placeholder"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="DebugInfo" type="Label" parent="Placeholder/Layout"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "Lv0: Tutorial!"
+
+[node name="Back" type="Button" parent="Placeholder/Layout"]
+custom_minimum_size = Vector2(156, 48)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Take me back!"
+script = ExtResource("1_dsmho")
+scene = 1

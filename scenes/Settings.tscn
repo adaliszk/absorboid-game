@@ -1,0 +1,172 @@
+[gd_scene load_steps=5 format=3 uid="uid://dsmciywhumntn"]
+
+[ext_resource type="Script" path="res://ui/actions/SwitchToLastScene.gd" id="1_3a0fx"]
+[ext_resource type="PackedScene" path="res://ui/BottomPanel.tscn" id="5_8wutw"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_788t1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_u0c7w"]
+
+[node name="Settings" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Viewport" type="AspectRatioContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+ratio = 1.4
+stretch_mode = 1
+
+[node name="Screen" type="MarginContainer" parent="Viewport"]
+custom_minimum_size = Vector2(800, 0)
+layout_mode = 2
+theme_override_constants/margin_left = 48
+theme_override_constants/margin_top = 48
+theme_override_constants/margin_right = 48
+theme_override_constants/margin_bottom = 48
+
+[node name="Layout" type="VBoxContainer" parent="Viewport/Screen"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="SceneTitle" type="Label" parent="Viewport/Screen/Layout"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "Settings"
+uppercase = true
+
+[node name="HSeparator1" type="HSeparator" parent="Viewport/Screen/Layout"]
+layout_mode = 2
+theme_override_constants/separation = 32
+theme_override_styles/separator = SubResource("StyleBoxEmpty_788t1")
+
+[node name="SoundVolume" type="HBoxContainer" parent="Viewport/Screen/Layout"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="Label" type="Label" parent="Viewport/Screen/Layout/SoundVolume"]
+custom_minimum_size = Vector2(196, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Master Volume"
+
+[node name="HSlider" type="HSlider" parent="Viewport/Screen/Layout/SoundVolume"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+tick_count = 5
+ticks_on_borders = true
+
+[node name="VSeparator" type="VSeparator" parent="Viewport/Screen/Layout/SoundVolume"]
+layout_mode = 2
+theme_override_constants/separation = 16
+theme_override_styles/separator = SubResource("StyleBoxEmpty_u0c7w")
+
+[node name="Help" type="Label" parent="Viewport/Screen/Layout/SoundVolume"]
+custom_minimum_size = Vector2(320, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.592157, 0.592157, 0.592157, 1)
+theme_override_font_sizes/font_size = 12
+text = "Controls all sound volume"
+
+[node name="KeyboardLayout" type="HBoxContainer" parent="Viewport/Screen/Layout"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="Label" type="Label" parent="Viewport/Screen/Layout/KeyboardLayout"]
+custom_minimum_size = Vector2(196, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Keyboard Layout"
+
+[node name="OptionButton" type="OptionButton" parent="Viewport/Screen/Layout/KeyboardLayout"]
+layout_mode = 2
+size_flags_horizontal = 3
+item_count = 2
+selected = 0
+allow_reselect = true
+popup/item_0/text = "QWERTY"
+popup/item_0/id = 0
+popup/item_1/text = "AZERTY"
+popup/item_1/id = 1
+
+[node name="VSeparator" type="VSeparator" parent="Viewport/Screen/Layout/KeyboardLayout"]
+layout_mode = 2
+theme_override_constants/separation = 16
+theme_override_styles/separator = SubResource("StyleBoxEmpty_u0c7w")
+
+[node name="Help" type="Label" parent="Viewport/Screen/Layout/KeyboardLayout"]
+custom_minimum_size = Vector2(320, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.592157, 0.592157, 0.592157, 1)
+theme_override_font_sizes/font_size = 12
+text = "Switches keyboard mapping presets"
+
+[node name="KeyboardHint" type="HBoxContainer" parent="Viewport/Screen/Layout"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="Spacer" type="VSeparator" parent="Viewport/Screen/Layout/KeyboardHint"]
+custom_minimum_size = Vector2(196, 0)
+layout_mode = 2
+theme_override_constants/separation = 16
+theme_override_styles/separator = SubResource("StyleBoxEmpty_u0c7w")
+
+[node name="GridContainer" type="GridContainer" parent="Viewport/Screen/Layout/KeyboardHint"]
+layout_mode = 2
+theme_override_constants/h_separation = 4
+theme_override_constants/v_separation = 4
+
+[node name="MOVE_LEFT" type="Label" parent="Viewport/Screen/Layout/KeyboardHint/GridContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "{input:move_left}: Move Left"
+
+[node name="MOVE_RIGHT" type="Label" parent="Viewport/Screen/Layout/KeyboardHint/GridContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "{input:move_right}: Move Right"
+
+[node name="MOVE_JUMP" type="Label" parent="Viewport/Screen/Layout/KeyboardHint/GridContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "{input:move_jump}: Jump from the ground, or double-jump in the air"
+
+[node name="MOVE_DASH" type="Label" parent="Viewport/Screen/Layout/KeyboardHint/GridContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "{input:move_dash}: Dash in the direction of the movement"
+
+[node name="HSeparator2" type="HSeparator" parent="Viewport/Screen/Layout"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/separator = SubResource("StyleBoxEmpty_788t1")
+
+[node name="Actions" type="HBoxContainer" parent="Viewport/Screen/Layout"]
+layout_mode = 2
+
+[node name="Back" type="Button" parent="Viewport/Screen/Layout/Actions"]
+custom_minimum_size = Vector2(96, 48)
+layout_mode = 2
+text = "Back"
+script = ExtResource("1_3a0fx")
+
+[node name="BottomPanel" parent="." instance=ExtResource("5_8wutw")]
