@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dehmbmk4b3n6q"]
 
-[ext_resource type="Script" path="res://ui/components/ReleaseOverlay.gd" id="1_jt5xl"]
+[ext_resource type="Script" path="res://ui/components/ReleaseOverlay/ReleaseOverlay.gd" id="1_jt5xl"]
 [ext_resource type="Script" path="res://ui/scripts/RenderPerformanceInfo.gd" id="2_eaujb"]
 [ext_resource type="Script" path="res://ui/scripts/RenderLabelContent.gd" id="3_tr1gh"]
 
@@ -15,8 +15,8 @@ offset_top = -31.0
 grow_horizontal = 2
 grow_vertical = 0
 size_flags_vertical = 8
-theme_override_constants/margin_left = 12
-theme_override_constants/margin_right = 12
+theme_override_constants/margin_left = 48
+theme_override_constants/margin_right = 48
 theme_override_constants/margin_bottom = 12
 script = ExtResource("1_jt5xl")
 
