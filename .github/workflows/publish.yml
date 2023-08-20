@@ -91,10 +91,6 @@ jobs:
             export: mac
     steps:
       -
-        name: 🤖 Setup Project
-        run: |
-          mkdir -p build/${{ matrix.export }}
-      -
         name: 📁 Download Artifact
         uses: actions/download-artifact@v3
         with:
@@ -108,7 +104,7 @@ jobs:
         uses: KikimoraGames/itch-publish@v0.0.3
         with:
           butlerApiKey: ${{ secrets.ITCH_API_KEY }}
-          gameData: ${{ matrix.export }}-v${{ github.run_number }}.zip
+          gameData: .
           itchUsername: ${{ secrets.ITCH_USERNAME }}
           itchGameId: ${{ secrets.ITCH_GAME_ID }}
           buildChannel: ${{ matrix.channel }}
