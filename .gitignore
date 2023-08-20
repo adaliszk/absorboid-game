@@ -11,4 +11,10 @@
 **/*.tmp
 
 # Generated files
-git_version.txt
+git_info.gd
+
+# Build files
+build/**/*
+
+# Exceptions
+!**/.gitkeep

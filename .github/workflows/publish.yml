@@ -1,0 +1,113 @@
+name: "Publish"
+
+on:
+  workflow_dispatch: {}
+  pull_request: {}
+  push:
+    branches:
+      - release
+      - develop
+
+env:
+  DOTNET_CLI_TELEMETRY_OPTOUT: true
+  DOTNET_NOLOGO: true
+
+
+defaults:
+  run:
+    shell: bash
+
+
+jobs:
+
+  build:
+    name: "Build"
+    strategy:
+      matrix:
+        export: [web, windows, mac]
+        include:
+          - export: web
+            output: index.html
+            os: ubuntu-latest
+          - export: windows
+            output: game.exe
+            os: windows-latest
+          - export: mac
+            output: game.dmg
+            os: macos-latest
+    runs-on: ${{ matrix.os}}
+    steps:
+      - name: 🧾 Checkout
+        uses: actions/checkout@v3
+        with:
+          lfs: true
+      -
+        name: 🤖 Setup Godot
+        uses: chickensoft-games/setup-godot@v1
+        with:
+          use-dotnet: false
+          version: 4.1.1
+      -
+        name: 🤖 Setup Project
+        run: |
+          mkdir -p build/${{ matrix.export }}
+          chmod +x *.sh
+          ./setup-git-version.sh
+      -
+        name: 🔬 Verify Setup
+        run: |
+          cat git_info.gd
+          godot --version
+      -
+        name: 🦺 Build Export
+        run: |
+          godot --headless --verbose --export-release "${{ matrix.export }}" ./build/${{ matrix.export }}/${{ matrix.output }}
+      -
+        name: 🔬 Verify Files
+        run: |
+          ls -la ./build/${{ matrix.export }}
+      -
+        name: 📁 Upload Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: ${{ matrix.export }}-v${{ github.run_number }}
+          path: ./build/${{ matrix.export }}/*
+
+  publish:
+    name: "Publish"
+    needs: build
+    if: github.ref == 'refs/heads/release' || github.ref == 'refs/heads/develop'
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        channel: [html5, windows, mac]
+        include:
+          -
+            channel: html5
+            export: web
+          -
+            channel: windows
+            export: windows
+          -
+            channel: mac
+            export: mac
+    steps:
+      -
+        name: 📁 Download Artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: ${{ matrix.export }}-v${{ github.run_number }}
+      -
+        name: 🔬 Verify Files
+        run: |
+          ls -la .
+      -
+        name: 🤖 Publish
+        uses: KikimoraGames/itch-publish@v0.0.3
+        with:
+          gameData: .
+          itchUsername: ${{ secrets.ITCH_USERNAME }}
+          itchGameId: ${{ secrets.ITCH_GAME_ID }}
+          butlerApiKey: ${{ secrets.ITCH_API_KEY }}
+          buildChannel: ${{ matrix.channel }}
+          buildNumber: ${{ github.run_number }}

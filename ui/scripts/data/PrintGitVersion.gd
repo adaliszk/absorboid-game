@@ -2,5 +2,8 @@ extends Label
 
 
 func _ready():
-	var file = FileAccess.open("res://git_version.txt", FileAccess.READ)
-	self.text = "%s" % file.get_as_text().strip_edges()
+	if Git.Build != null:
+		self.text = "Build#%s" % Git.Build
+		return
+
+	self.text = "%s #%s" % [Git.Branch, Git.Commit]

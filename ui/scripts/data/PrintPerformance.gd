@@ -12,7 +12,7 @@ func _process(_delta):
 		% [
 			snapped(cpu_time * 1000, 0.01),
 			snapped(gpu_time * 1000, 0.01),
-			snapped((mem_used / 1024) / 1024, 0.1),
+			snapped(mem_used / 1048576, 0.01),
 			fps
 		]
 	)
