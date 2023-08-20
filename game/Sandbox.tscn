@@ -22,10 +22,15 @@ color = 1
 
 [node name="TooltipBubble" parent="TileMap/ColorChanger1" instance=ExtResource("3_s5fxq")]
 visible = false
+anchors_preset = 2
+anchor_left = 0.0
+anchor_top = 1.0
+anchor_right = 0.0
+anchor_bottom = 1.0
 offset_left = -83.0
 offset_right = 83.0
-theme_override_constants/margin_top = 88
-offset = null
+theme_override_constants/margin_top = 72
+offset = 0.0
 tooltip = "{debug}"
 direction = 2
 
@@ -52,10 +57,15 @@ color = 2
 
 [node name="TooltipBubble" parent="TileMap/ColorChanger2" instance=ExtResource("3_s5fxq")]
 visible = false
+anchors_preset = 2
+anchor_left = 0.0
+anchor_top = 1.0
+anchor_right = 0.0
+anchor_bottom = 1.0
 offset_left = -83.0
 offset_right = 83.0
-theme_override_constants/margin_top = 88
-offset = null
+theme_override_constants/margin_top = 72
+offset = 0.0
 tooltip = "{debug}"
 direction = 2
 
@@ -82,10 +92,15 @@ color = 3
 
 [node name="TooltipBubble" parent="TileMap/ColorChanger3" instance=ExtResource("3_s5fxq")]
 visible = false
+anchors_preset = 2
+anchor_left = 0.0
+anchor_top = 1.0
+anchor_right = 0.0
+anchor_bottom = 1.0
 offset_left = -83.0
 offset_right = 83.0
-theme_override_constants/margin_top = 88
-offset = null
+theme_override_constants/margin_top = 72
+offset = 0.0
 tooltip = "{debug}"
 direction = 2
 
@@ -112,10 +127,15 @@ color = 4
 
 [node name="TooltipBubble" parent="TileMap/ColorChanger4" instance=ExtResource("3_s5fxq")]
 visible = false
+anchors_preset = 2
+anchor_left = 0.0
+anchor_top = 1.0
+anchor_right = 0.0
+anchor_bottom = 1.0
 offset_left = -83.0
 offset_right = 83.0
-theme_override_constants/margin_top = 88
-offset = null
+theme_override_constants/margin_top = 72
+offset = 0.0
 tooltip = "{debug}"
 direction = 2
 
