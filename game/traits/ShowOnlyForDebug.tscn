@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://c8tiu4yx6b378"]
+
+[ext_resource type="Script" path="res://game/traits/ShowOnlyForDebug.gd" id="1_s4a81"]
+
+[node name="ShowOnlyForDebug" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_s4a81")

@@ -42,7 +42,7 @@ func verbose(message: String, context = _get_context()) -> void:
 func _get_context() -> String:
 	var context = get_stack().pop_back()
 	var scope = context.source.split("/")[-1].split(".")[0]
-	return "%s.%s()" % [ scope.trim_prefix("_"), context.function ]
+	return "%s.%s()" % [ scope, context.function.trim_prefix("_") ]
 
 
 func send_message(verbosity: Level, message: String, context: String) -> void:
