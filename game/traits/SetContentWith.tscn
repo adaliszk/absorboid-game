@@ -2,7 +2,8 @@
 
 [ext_resource type="Script" path="res://game/traits/SetContentWith.gd" id="1_d61g1"]
 
-[node name="SetContentWith" type="Control"]
+[node name="SetContentWith" type="Control" node_paths=PackedStringArray("target")]
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_d61g1")
+target = NodePath("")
