@@ -11,3 +11,6 @@ static var ColorValue = [
 	ProjectSettings.get_setting("game/config/color3"),
 	ProjectSettings.get_setting("game/config/color4"),
 ]
+
+
+static var last_scene: String = "Main"

@@ -1,0 +1,67 @@
+[gd_scene load_steps=4 format=3 uid="uid://dw5hfe8xbtapr"]
+
+[ext_resource type="Script" path="res://ui/scripts/UseLevelLoaderProgress.gd" id="1_8ohon"]
+[ext_resource type="PackedScene" path="res://ui/BottomPanel.tscn" id="2_k5p5e"]
+[ext_resource type="Script" path="res://ui/scripts/RenderLabelContent.gd" id="2_w3i73"]
+
+[node name="LevelLoader" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Viewport" type="AspectRatioContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+ratio = 1.4
+stretch_mode = 1
+
+[node name="Screen" type="MarginContainer" parent="Viewport"]
+custom_minimum_size = Vector2(800, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_left = 48
+theme_override_constants/margin_top = 48
+theme_override_constants/margin_right = 48
+theme_override_constants/margin_bottom = 48
+
+[node name="Layout" type="VBoxContainer" parent="Viewport/Screen"]
+layout_mode = 2
+
+[node name="SceneTitle" type="Label" parent="Viewport/Screen/Layout"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 16
+text = "Loading..."
+horizontal_alignment = 1
+uppercase = true
+
+[node name="ProgressBar" type="ProgressBar" parent="Viewport/Screen/Layout"]
+custom_minimum_size = Vector2(256, 32)
+layout_mode = 2
+max_value = 1.0
+script = ExtResource("1_8ohon")
+
+[node name="Tips" type="Label" parent="Viewport/Screen/Layout"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "{loader_tip}"
+horizontal_alignment = 1
+script = ExtResource("2_w3i73")
+
+[node name="BottomPanel" parent="." instance=ExtResource("2_k5p5e")]

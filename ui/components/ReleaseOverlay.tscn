@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://dehmbmk4b3n6q"]
 
 [ext_resource type="Script" path="res://ui/components/ReleaseOverlay.gd" id="1_jt5xl"]
-[ext_resource type="Script" path="res://ui/scripts/data/PrintPerformance.gd" id="1_mpm5g"]
-[ext_resource type="Script" path="res://ui/scripts/data/PrintGitVersion.gd" id="3_oecy0"]
+[ext_resource type="Script" path="res://ui/scripts/RenderPerformanceInfo.gd" id="2_eaujb"]
+[ext_resource type="Script" path="res://ui/scripts/RenderLabelContent.gd" id="3_tr1gh"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0os6g"]
 
@@ -31,7 +31,7 @@ theme_override_colors/font_shadow_color = Color(0.803922, 0.803922, 0.803922, 1)
 theme_override_constants/shadow_offset_y = 2
 theme_override_font_sizes/font_size = 11
 text = "{performance}"
-script = ExtResource("1_mpm5g")
+script = ExtResource("2_eaujb")
 
 [node name="VSeparator" type="VSeparator" parent="HBoxContainer"]
 layout_mode = 2
@@ -44,5 +44,5 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_shadow_color = Color(0.803922, 0.803922, 0.803922, 1)
 theme_override_constants/shadow_offset_y = 2
 theme_override_font_sizes/font_size = 11
-text = "{version}"
-script = ExtResource("3_oecy0")
+text = "{git_version}"
+script = ExtResource("3_tr1gh")
