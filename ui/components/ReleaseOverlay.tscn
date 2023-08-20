@@ -1,7 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://dehmbmk4b3n6q"]
+[gd_scene load_steps=4 format=3 uid="uid://dehmbmk4b3n6q"]
 
 [ext_resource type="Script" path="res://ui/scripts/data/PrintPerformance.gd" id="1_mpm5g"]
-[ext_resource type="Script" path="res://ui/scripts/data/PrintGameName.gd" id="2_fhaft"]
 [ext_resource type="Script" path="res://ui/scripts/data/PrintGitVersion.gd" id="3_oecy0"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0os6g"]
@@ -34,15 +33,6 @@ script = ExtResource("1_mpm5g")
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/separator = SubResource("StyleBoxEmpty_0os6g")
-
-[node name="GameName" type="Label" parent="HBoxContainer"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_shadow_color = Color(0.803922, 0.803922, 0.803922, 1)
-theme_override_constants/shadow_offset_y = 2
-theme_override_font_sizes/font_size = 14
-text = "{name}"
-script = ExtResource("2_fhaft")
 
 [node name="GameVersion" type="Label" parent="HBoxContainer"]
 layout_mode = 2

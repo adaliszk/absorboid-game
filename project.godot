@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 Log="*res://globals/Logger.gd"
+Git="*res://git_info.gd"
 
 [rendering]
 

@@ -1,7 +1,9 @@
 extends Label
 
-const GIT = preload("res://git_version.gd")
-
 
 func _ready():
-	self.text = "%s" % GIT.HASH
+	if Git.Build != null:
+		self.text = "Build#%s" % Git.Build
+		return
+
+	self.text = "%s #%s" % [Git.Branch, Git.Commit]

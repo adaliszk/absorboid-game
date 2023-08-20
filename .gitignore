@@ -11,7 +11,7 @@
 **/*.tmp
 
 # Generated files
-git_version.gd
+git_info.gd
 
 # Build files
 build/**/*
