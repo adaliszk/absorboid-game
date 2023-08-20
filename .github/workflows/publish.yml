@@ -76,6 +76,7 @@ jobs:
   publish:
     name: "Publish"
     needs: build
+    if: github.ref == 'refs/heads/release' || github.ref == 'refs/heads/develop'
     runs-on: ubuntu-latest
     strategy:
       matrix:
