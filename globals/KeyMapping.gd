@@ -37,8 +37,8 @@ static func get_vector() -> Vector2:
 	var down = 1.0 if Input.is_key_pressed(input["MOVE_DOWN"]) else 0.0
 	return Vector2(right - left, down - up)
 
-static func is_jump_pressed() -> bool:
-	return Input.is_key_pressed(input["MOVE_JUMP"])
+static func is_jump_pressed(event: InputEventKey) -> bool:
+	return event.keycode == input["MOVE_JUMP"] and event.pressed and not event.echo
 
-static func is_dash_pressed() -> bool:
-	return Input.is_key_pressed(input["MOVE_DASH"])
+static func is_dash_pressed(event: InputEventKey) -> bool:
+	return event.keycode == input["MOVE_DASH"] and event.pressed and not event.echo
