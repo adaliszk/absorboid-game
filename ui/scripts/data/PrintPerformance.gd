@@ -2,10 +2,6 @@ extends Label
 
 
 func _process(_delta):
-	if not OS.is_debug_build():
-		self.text = ""
-		return
-
 	var cpu_time = Performance.get_monitor(Performance.TIME_PROCESS)
 	var gpu_time = Performance.get_monitor(Performance.TIME_PHYSICS_PROCESS)
 	var mem_used = Performance.get_monitor(Performance.MEMORY_STATIC)
