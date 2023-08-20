@@ -1,6 +1,8 @@
 extends CharacterBody2D
 
 signal color_change(old: Game.ColorIndex, new: Game.ColorIndex)
+signal dash(direction: Vector2)
+signal jump(direction: Vector2)
 
 const SPEED: float = 400.0
 const JUMP_VELOCITY: float = -550.0
@@ -60,9 +62,11 @@ func handle_inputs(delta) -> void:
 	if Input.is_action_just_pressed("move_jump"):
 		if is_on_floor():
 			velocity.y = JUMP_VELOCITY
+			jump.emit(velocity)
 		elif color_index != Game.ColorIndex.Default:
 			switch_color(Game.ColorIndex.Default)
 			velocity.y = JUMP_VELOCITY
+			jump.emit(velocity)
 
 	# MOVE Action
 	var direction = Input.get_vector("move_left", "move_right", "move_up", "move_down").normalized()
@@ -72,8 +76,9 @@ func handle_inputs(delta) -> void:
 	if Input.is_action_just_pressed("move_dash") and color_index != Game.ColorIndex.Default:
 		Log.debug("dash:%s" % direction)
 		switch_color(Game.ColorIndex.Default)
-		dash_energy = DASH_ENERGY
 		dash_direction = direction.x
+		dash_energy = DASH_ENERGY
+		dash.emit(velocity + Vector2(dash_energy * dash_direction, 0))
 		velocity.y += gravity * -2.0 * delta
 
 	velocity.x = move_velocity.x + dash_energy * dash_direction
