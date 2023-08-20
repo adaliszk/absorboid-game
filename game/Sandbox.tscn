@@ -1,0 +1,175 @@
+[gd_scene load_steps=7 format=3 uid="uid://d24hbhrkbwt4x"]
+
+[ext_resource type="TileSet" uid="uid://dx2d4lqdb7qg2" path="res://game/assets/sandbox_packed.tres" id="1_g27gk"]
+[ext_resource type="PackedScene" uid="uid://dq7hdnxtl2ru" path="res://game/interactables/ColorChanger.tscn" id="2_d4ipy"]
+[ext_resource type="PackedScene" uid="uid://c3e7l126blnup" path="res://game/entities/Player.tscn" id="2_ek1uc"]
+[ext_resource type="PackedScene" uid="uid://cdltiu2pshqsp" path="res://ui/components/TooltipBubble/TooltipBubble.tscn" id="3_s5fxq"]
+[ext_resource type="PackedScene" uid="uid://c8tiu4yx6b378" path="res://game/traits/ShowOnlyForDebug.tscn" id="4_jley5"]
+[ext_resource type="PackedScene" uid="uid://rynss7452c7m" path="res://game/traits/SetContentWith.tscn" id="5_ekcub"]
+
+[node name="Sandbox" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource("1_g27gk")
+format = 2
+layer_0/tile_data = PackedInt32Array(0, 65536, 1, 65536, 65536, 1, 131072, 65536, 1, 196608, 65536, 1, 262144, 65536, 1, 327680, 65536, 1, 393216, 65536, 1, 458752, 65536, 1, 524288, 65536, 1, 589824, 65536, 1, 655360, 65536, 1, 720896, 65536, 1, 786432, 65536, 1, 851968, 65536, 1, 917504, 65536, 1, 983040, 65536, 1, 1048576, 65536, 1, 1114112, 65536, 1, 1179648, 65536, 1, 1245184, 65536, 1, 1310720, 65536, 1, 1376256, 65536, 1, 1441792, 65536, 1, 1507328, 65536, 1, 1507329, 65536, 1, 1507330, 65536, 1, 1507331, 65536, 1, 1507332, 65536, 1, 1507333, 65536, 1, 1507334, 65536, 1, 1507335, 65536, 1, 1507336, 65536, 1, 1507337, 65536, 1, 1507338, 65536, 1, 1507339, 65536, 1, 1507340, 65536, 1, 1507341, 65536, 1, 1507342, 65536, 1, 1507343, 65536, 1, 1507344, 65536, 1, 1441808, 65536, 1, 1441809, 65536, 1, 1441810, 65536, 1, 1441811, 65536, 1, 1441812, 65536, 1, 1376276, 65536, 1, 1310740, 65536, 1, 1310741, 65536, 1, 1310742, 65536, 1, 1310743, 65536, 1, 1310744, 65536, 1, 1245208, 65536, 1, 1179672, 65536, 1, 1114136, 65536, 1, 1114137, 65536, 1, 1114138, 65536, 1, 1114139, 65536, 1, 1114140, 65536, 1, 1048604, 65536, 1, 983068, 65536, 1, 917532, 65536, 1, 851996, 65536, 1, 851997, 65536, 1, 851998, 65536, 1, 851999, 65536, 1, 852000, 65536, 1, 786464, 65536, 1, 720928, 65536, 1, 655392, 65536, 1, 589856, 65536, 1, 524320, 65536, 1, 524321, 65536, 1, 524322, 65536, 1, 524323, 65536, 1, 524324, 65536, 1, 524325, 65536, 1, 1900581, 65536, 1, 1900580, 65536, 1, 1900579, 65536, 1, 1900578, 65536, 1, 1900577, 65536, 1, 1900576, 65536, 1, 1900575, 65536, 1, 1900574, 65536, 1, 1900573, 65536, 1, 1900572, 65536, 1, 1900571, 65536, 1, 1900570, 65536, 1, 1900569, 65536, 1, 1900568, 65536, 1, 1900567, 65536, 1, 1900566, 65536, 1, 1900565, 65536, 1, 1900564, 65536, 1, 1900563, 65536, 1, 1900562, 65536, 1, 1900561, 65536, 1, 1900560, 65536, 1, 1900559, 65536, 1, 1900558, 65536, 1, 1900557, 65536, 1, 1900556, 65536, 1, 1900555, 65536, 1, 1900554, 65536, 1, 1900553, 65536, 1, 1900552, 65536, 1, 1900551, 65536, 1, 1900550, 65536, 1, 1900549, 65536, 1, 1900548, 65536, 1, 1900547, 65536, 1, 1900546, 65536, 1, 1900545, 65536, 1, 1900544, 65536, 1, 1966080, 65536, 1, 2031616, 65536, 1, 2097152, 65536, 1, 2162688, 65536, 1, 2228224, 65536, 1, 2293760, 65536, 1, 2359296, 65536, 1, 2424832, 65536, 1, 2490368, 65536, 1, 2555904, 65536, 1, 2555905, 65536, 1, 2555906, 65536, 1, 2555907, 65536, 1, 2555908, 65536, 1, 2555909, 65536, 1, 2555910, 65536, 1, 2555911, 65536, 1, 2555912, 65536, 1, 2555913, 65536, 1, 2555914, 65536, 1, 2555915, 65536, 1, 2555916, 65536, 1, 2555917, 65536, 1, 2555918, 65536, 1, 2555919, 65536, 1, 2555920, 65536, 1, 2555921, 65536, 1, 2555922, 65536, 1, 2555923, 65536, 1, 2555924, 65536, 1, 2555925, 65536, 1, 2555926, 65536, 1, 2555927, 65536, 1, 2555928, 65536, 1, 2555929, 65536, 1, 2555930, 65536, 1, 2555931, 65536, 1, 2555932, 65536, 1, 2555933, 65536, 1, 2555934, 65536, 1, 2555935, 65536, 1, 2555936, 65536, 1, 2555937, 65536, 1, 2555938, 65536, 1, 2555939, 65536, 1, 2555940, 65536, 1, 2555941, 65536, 1, 2555942, 65536, 1, 2555943, 65536, 1, 2555944, 65536, 1, 2555945, 65536, 1, 2555946, 65536, 1, 2555947, 65536, 1, 2555948, 65536, 1, 2555949, 65536, 1, 2555950, 65536, 1, 2555951, 65536, 1, 2555952, 65536, 1, 2555953, 65536, 1, 2555954, 65536, 1, 2555955, 65536, 1, 2555956, 65536, 1, 2555957, 65536, 1, 2555958, 65536, 1, 2555959, 65536, 1, 2555960, 65536, 1, 2555961, 65536, 1, 2555962, 65536, 1, 2555963, 65536, 1, 2490427, 65536, 1, 2424891, 65536, 1, 2359355, 65536, 1, 2293819, 65536, 1, 2228283, 65536, 1, 2162747, 65536, 1, 2097211, 65536, 1, 2031675, 65536, 1, 1966139, 65536, 1, 1900603, 65536, 1, 1835067, 65536, 1, 1769531, 65536, 1, 1703995, 65536, 1, 1638459, 65536, 1, 1572923, 65536, 1, 1507387, 65536, 1, 1441851, 65536, 1, 1376315, 65536, 1, 1310779, 65536, 1, 1245243, 65536, 1, 1179707, 65536, 1, 1114171, 65536, 1, 1048635, 65536, 1, 983099, 65536, 1, 917563, 65536, 1, 852027, 65536, 1, 786491, 65536, 1, 720955, 65536, 1, 655419, 65536, 1, 589883, 65536, 1, 524347, 65536, 1, 458811, 65536, 1, 393275, 65536, 1, 327739, 65536, 1, 262203, 65536, 1, 196667, 65536, 1, 131131, 65536, 1, 65595, 65536, 1, 59, 65536, 1, 1, 65536, 1, 2, 65536, 1, 3, 65536, 1, 4, 65536, 1, 5, 65536, 1, 6, 65536, 1, 7, 65536, 1, 8, 65536, 1, 9, 65536, 1, 10, 65536, 1, 11, 65536, 1, 12, 65536, 1, 13, 65536, 1, 14, 65536, 1, 15, 65536, 1, 16, 65536, 1, 17, 65536, 1, 18, 65536, 1, 19, 65536, 1, 20, 65536, 1, 21, 65536, 1, 22, 65536, 1, 23, 65536, 1, 24, 65536, 1, 25, 65536, 1, 26, 65536, 1, 27, 65536, 1, 28, 65536, 1, 29, 65536, 1, 30, 65536, 1, 31, 65536, 1, 32, 65536, 1, 33, 65536, 1, 34, 65536, 1, 35, 65536, 1, 36, 65536, 1, 37, 65536, 1, 38, 65536, 1, 39, 65536, 1, 40, 65536, 1, 41, 65536, 1, 42, 65536, 1, 43, 65536, 1, 44, 65536, 1, 45, 65536, 1, 46, 65536, 1, 47, 65536, 1, 48, 65536, 1, 49, 65536, 1, 50, 65536, 1, 51, 65536, 1, 52, 65536, 1, 53, 65536, 1, 54, 65536, 1, 55, 65536, 1, 56, 65536, 1, 57, 65536, 1, 58, 65536, 1, 524326, 65536, 1, 589862, 65536, 1, 655398, 65536, 1, 720934, 65536, 1, 786470, 65536, 1, 852006, 65536, 1, 917542, 65536, 1, 983078, 65536, 1, 1048614, 65536, 1, 1114150, 65536, 1, 1179686, 65536, 1, 1245222, 65536, 1, 1310758, 65536, 1, 1376294, 65536, 1, 1441830, 65536, 1, 1507366, 65536, 1, 1572902, 65536, 1, 1638438, 65536, 1, 1703974, 65536, 1, 1769510, 65536, 1, 1835046, 65536, 1, 1900582, 65536, 1)
+
+[node name="ColorChanger1" parent="TileMap" instance=ExtResource("2_d4ipy")]
+position = Vector2(72, 376)
+collision_layer = 1
+collision_mask = 1
+color = 1
+
+[node name="TooltipBubble" parent="TileMap/ColorChanger1" instance=ExtResource("3_s5fxq")]
+visible = false
+offset_left = -83.0
+offset_right = 83.0
+theme_override_constants/margin_top = 88
+offset = null
+tooltip = "{debug}"
+direction = 2
+
+[node name="ShowOnlyForDebug" parent="TileMap/ColorChanger1/TooltipBubble" instance=ExtResource("4_jley5")]
+layout_mode = 2
+
+[node name="SetContentWith" parent="TileMap/ColorChanger1/TooltipBubble" node_paths=PackedStringArray("content", "target") instance=ExtResource("5_ekcub")]
+layout_mode = 2
+content = NodePath("..")
+target = NodePath("../..")
+
+[node name="color_name" type="Label" parent="TileMap/ColorChanger1/TooltipBubble/SetContentWith"]
+layout_mode = 0
+offset_left = 100.0
+offset_top = -261.0
+offset_right = 140.0
+offset_bottom = -238.0
+
+[node name="ColorChanger2" parent="TileMap" instance=ExtResource("2_d4ipy")]
+position = Vector2(568, 136)
+collision_layer = 2
+collision_mask = 2
+color = 2
+
+[node name="TooltipBubble" parent="TileMap/ColorChanger2" instance=ExtResource("3_s5fxq")]
+visible = false
+offset_left = -83.0
+offset_right = 83.0
+theme_override_constants/margin_top = 88
+offset = null
+tooltip = "{debug}"
+direction = 2
+
+[node name="ShowOnlyForDebug" parent="TileMap/ColorChanger2/TooltipBubble" instance=ExtResource("4_jley5")]
+layout_mode = 2
+
+[node name="SetContentWith" parent="TileMap/ColorChanger2/TooltipBubble" node_paths=PackedStringArray("content", "target") instance=ExtResource("5_ekcub")]
+layout_mode = 2
+content = NodePath("..")
+target = NodePath("../..")
+
+[node name="color_name" type="Label" parent="TileMap/ColorChanger2/TooltipBubble/SetContentWith"]
+layout_mode = 0
+offset_left = 100.0
+offset_top = -261.0
+offset_right = 140.0
+offset_bottom = -238.0
+
+[node name="ColorChanger3" parent="TileMap" instance=ExtResource("2_d4ipy")]
+position = Vector2(824, 632)
+collision_layer = 3
+collision_mask = 3
+color = 3
+
+[node name="TooltipBubble" parent="TileMap/ColorChanger3" instance=ExtResource("3_s5fxq")]
+visible = false
+offset_left = -83.0
+offset_right = 83.0
+theme_override_constants/margin_top = 88
+offset = null
+tooltip = "{debug}"
+direction = 2
+
+[node name="ShowOnlyForDebug" parent="TileMap/ColorChanger3/TooltipBubble" instance=ExtResource("4_jley5")]
+layout_mode = 2
+
+[node name="SetContentWith" parent="TileMap/ColorChanger3/TooltipBubble" node_paths=PackedStringArray("content", "target") instance=ExtResource("5_ekcub")]
+layout_mode = 2
+content = NodePath("..")
+target = NodePath("../..")
+
+[node name="color_name" type="Label" parent="TileMap/ColorChanger3/TooltipBubble/SetContentWith"]
+layout_mode = 0
+offset_left = 100.0
+offset_top = -261.0
+offset_right = 140.0
+offset_bottom = -238.0
+
+[node name="ColorChanger4" parent="TileMap" instance=ExtResource("2_d4ipy")]
+position = Vector2(264, 632)
+collision_layer = 4
+collision_mask = 4
+color = 4
+
+[node name="TooltipBubble" parent="TileMap/ColorChanger4" instance=ExtResource("3_s5fxq")]
+visible = false
+offset_left = -83.0
+offset_right = 83.0
+theme_override_constants/margin_top = 88
+offset = null
+tooltip = "{debug}"
+direction = 2
+
+[node name="ShowOnlyForDebug" parent="TileMap/ColorChanger4/TooltipBubble" instance=ExtResource("4_jley5")]
+layout_mode = 2
+
+[node name="SetContentWith" parent="TileMap/ColorChanger4/TooltipBubble" node_paths=PackedStringArray("content", "target") instance=ExtResource("5_ekcub")]
+layout_mode = 2
+content = NodePath("..")
+target = NodePath("../..")
+
+[node name="color_name" type="Label" parent="TileMap/ColorChanger4/TooltipBubble/SetContentWith"]
+layout_mode = 0
+offset_left = 100.0
+offset_top = -261.0
+offset_right = 140.0
+offset_bottom = -238.0
+
+[node name="Player" parent="." instance=ExtResource("2_ek1uc")]
+position = Vector2(156, 211)
+
+[node name="TooltipBubble" parent="Player" instance=ExtResource("3_s5fxq")]
+anchors_preset = 9
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 1.0
+theme_override_constants/margin_bottom = 128
+offset = 56.0
+tooltip = "{debug}"
+
+[node name="ShowOnlyForDebug" parent="Player/TooltipBubble" instance=ExtResource("4_jley5")]
+layout_mode = 2
+
+[node name="SetContentWith" parent="Player/TooltipBubble" node_paths=PackedStringArray("content", "target") instance=ExtResource("5_ekcub")]
+layout_mode = 2
+content = NodePath("..")
+target = NodePath("../..")
+
+[node name="color_name" type="Label" parent="Player/TooltipBubble/SetContentWith"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="move_velocity" type="Label" parent="Player/TooltipBubble/SetContentWith"]
+layout_mode = 0
+offset_left = 163.5
+offset_top = 256.0
+offset_right = 203.5
+offset_bottom = 279.0
+
+[node name="dash_energy" type="Label" parent="Player/TooltipBubble/SetContentWith"]
+layout_mode = 0
+offset_left = 163.5
+offset_top = 256.0
+offset_right = 203.5
+offset_bottom = 279.0
