@@ -4,12 +4,14 @@ enum Scene {
 	Main,
 	LevelSelect,
 	Settings,
+	Sandbox,
 }
 
 const SceneFiles = [
 	"res://scenes/Main.tscn",
 	"res://scenes/LevelSelect.tscn",
 	"res://scenes/Settings.tscn",
+	"res://game/Sandbox.tscn",
 ]
 
 @export var scene: Scene = Scene.Main

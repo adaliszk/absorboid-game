@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://d24hbhrkbwt4x"]
+[gd_scene load_steps=9 format=3 uid="uid://d24hbhrkbwt4x"]
 
 [ext_resource type="TileSet" uid="uid://dx2d4lqdb7qg2" path="res://game/assets/sandbox_packed.tres" id="1_g27gk"]
 [ext_resource type="PackedScene" uid="uid://dq7hdnxtl2ru" path="res://game/interactables/ColorChanger.tscn" id="2_d4ipy"]
@@ -6,6 +6,14 @@
 [ext_resource type="PackedScene" uid="uid://cdltiu2pshqsp" path="res://ui/components/TooltipBubble/TooltipBubble.tscn" id="3_s5fxq"]
 [ext_resource type="PackedScene" uid="uid://c8tiu4yx6b378" path="res://game/traits/ShowOnlyForDebug.tscn" id="4_jley5"]
 [ext_resource type="PackedScene" uid="uid://rynss7452c7m" path="res://game/traits/SetContentWith.tscn" id="5_ekcub"]
+[ext_resource type="Script" path="res://ui/actions/SwitchToScene.gd" id="7_d5a7a"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nd2jr"]
+bg_color = Color(0, 0, 0, 1)
+expand_margin_left = 8.0
+expand_margin_top = 8.0
+expand_margin_right = 8.0
+expand_margin_bottom = 8.0
 
 [node name="Sandbox" type="Node2D"]
 
@@ -193,3 +201,34 @@ offset_left = 163.5
 offset_top = 256.0
 offset_right = 203.5
 offset_bottom = 279.0
+
+[node name="DevActions" type="CanvasLayer" parent="."]
+
+[node name="PanelContainer" type="PanelContainer" parent="DevActions"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 31.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_nd2jr")
+
+[node name="Layout" type="HBoxContainer" parent="DevActions/PanelContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="Restart" type="Button" parent="DevActions/PanelContainer/Layout"]
+layout_mode = 2
+text = "RESTART"
+script = ExtResource("7_d5a7a")
+scene = 3
+
+[node name="Main" type="Button" parent="DevActions/PanelContainer/Layout"]
+layout_mode = 2
+text = "MAIN MENU"
+script = ExtResource("7_d5a7a")
+
+[node name="LevelSelect" type="Button" parent="DevActions/PanelContainer/Layout"]
+layout_mode = 2
+text = "LEVEL SELECT"
+script = ExtResource("7_d5a7a")
+scene = 1
