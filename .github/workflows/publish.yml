@@ -56,7 +56,7 @@ jobs:
       -
         name: 🔬 Verify Setup
         run: |
-          cat git_version.gd
+          cat git_info.gd
           godot --version
       -
         name: 🦺 Build Export
