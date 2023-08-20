@@ -2,6 +2,8 @@
 
 GDSCRIPT=$(
 	cat <<-EOF
+		extends Node
+
 		const Build = ${GITHUB_RUN_NUMBER:-null}
 		const Branch = "$(git rev-parse --abbrev-ref HEAD)"
 		const Commit = "$(git rev-parse --short HEAD)"
