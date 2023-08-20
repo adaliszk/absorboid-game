@@ -103,7 +103,6 @@ text = "Keyboard Layout"
 [node name="OptionButton" type="OptionButton" parent="Viewport/Screen/Layout/KeyboardLayout"]
 layout_mode = 2
 size_flags_horizontal = 3
-selected = 0
 allow_reselect = true
 script = ExtResource("1_dplg0")
 
@@ -176,5 +175,5 @@ script = ExtResource("3_1n0fq")
 
 [connection signal="item_applied" from="Viewport/Screen/Layout/KeyboardLayout/OptionButton" to="Viewport/Screen/Layout/KeyboardHint/GridContainer/MOVE_LEFT" method="render"]
 [connection signal="item_applied" from="Viewport/Screen/Layout/KeyboardLayout/OptionButton" to="Viewport/Screen/Layout/KeyboardHint/GridContainer/MOVE_RIGHT" method="render"]
-[connection signal="item_applied" from="Viewport/Screen/Layout/KeyboardLayout/OptionButton" to="Viewport/Screen/Layout/KeyboardHint/GridContainer/MOVE_DASH" method="render"]
 [connection signal="item_applied" from="Viewport/Screen/Layout/KeyboardLayout/OptionButton" to="Viewport/Screen/Layout/KeyboardHint/GridContainer/MOVE_JUMP" method="render"]
+[connection signal="item_applied" from="Viewport/Screen/Layout/KeyboardLayout/OptionButton" to="Viewport/Screen/Layout/KeyboardHint/GridContainer/MOVE_DASH" method="render"]
