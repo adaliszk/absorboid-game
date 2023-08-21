@@ -15,11 +15,13 @@ theme_override_constants/separation = 4
 layout_mode = 2
 text = "{level_name}:"
 script = ExtResource("1_srcbr")
+update_on_physics_process = true
 
 [node name="StageName" type="Label" parent="."]
 layout_mode = 2
 text = "{stage_name}"
 script = ExtResource("1_srcbr")
+update_on_physics_process = true
 
 [node name="(flex-grow)" type="VSeparator" parent="."]
 layout_mode = 2
@@ -28,4 +30,6 @@ theme_override_styles/separator = SubResource("StyleBoxEmpty_lcrmq")
 
 [node name="LevelTimer" type="Label" parent="."]
 layout_mode = 2
-text = "00:00.00"
+text = "{level_stopwatch}"
+script = ExtResource("1_srcbr")
+update_on_process = true

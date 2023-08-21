@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://ui/scripts/RenderLabelContent.gd" id="1_5dtuj"]
 [ext_resource type="Script" path="res://ui/actions/LoadLevel.gd" id="2_3b6eb"]
 [ext_resource type="Script" path="res://ui/actions/SwitchToScene.gd" id="3_oq5dc"]
-[ext_resource type="PackedScene" path="res://ui/BottomPanel.tscn" id="6_erkl6"]
+[ext_resource type="PackedScene" uid="uid://dmwloprpiyah0" path="res://ui/BottomPanel.tscn" id="6_erkl6"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4vpth"]
 

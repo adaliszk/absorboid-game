@@ -13,12 +13,23 @@ var ColorValue = [
 	ProjectSettings.get_setting("game/config/color4"),
 ]
 
+var settings: Dictionary = {}
+
 var level_controller: LevelController = null
-var level_name: String = "N/A"
-var stage_name: String = "N/A"
+var level_data: Dictionary = {}
 
+var level_name: String = "N/A":
+	set(value):
+		if level_name != value:
+			split_names = []
+		level_name = value
 
-var settings = {}
+var stage_name: String = "N/A":
+	set(value):
+		split_names.append(value)
+		stage_name = value
+
+var split_names: PackedStringArray = []
 
 
 # region: Lifecycle
