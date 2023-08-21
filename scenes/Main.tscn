@@ -69,7 +69,7 @@ size_flags_horizontal = 0
 text = "Start"
 alignment = 0
 script = ExtResource("2_attn7")
-scene = 1
+scene = 2
 
 [node name="Settings" type="Button" parent="Viewport/MainMenu/Layout"]
 custom_minimum_size = Vector2(96, 48)
@@ -78,7 +78,7 @@ size_flags_horizontal = 0
 text = "Settings"
 alignment = 0
 script = ExtResource("2_attn7")
-scene = 2
+scene = 1
 
 [node name="Exit" type="Button" parent="Viewport/MainMenu/Layout"]
 custom_minimum_size = Vector2(96, 48)
