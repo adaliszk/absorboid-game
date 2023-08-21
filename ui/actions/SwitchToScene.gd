@@ -2,16 +2,18 @@ extends Button
 
 enum Scene {
 	Main,
-	LevelSelect,
 	Settings,
+	LevelSelect,
+	LevelLoader,
 	LevelResult,
 	Sandbox,
 }
 
 const SceneFiles = [
 	"res://scenes/Main.tscn",
-	"res://scenes/LevelSelect.tscn",
 	"res://scenes/Settings.tscn",
+	"res://scenes/LevelSelect.tscn",
+	"res://scenes/LevelLoader.tscn",
 	"res://scenes/LevelResult.tscn",
 	"res://game/Sandbox.tscn",
 ]
