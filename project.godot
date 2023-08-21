@@ -22,6 +22,7 @@ config/icon="res://icon.svg"
 
 Log="*res://globals/Logger.gd"
 Git="*res://git_info.gd"
+SoundManager="*res://globals/SoundManager.tscn"
 Game="*res://globals/Game.gd"
 LevelLoader="*res://globals/LevelLoader.gd"
 

@@ -16,5 +16,11 @@ git_info.gd
 # Build files
 build/**/*
 
+# Large files
+**/*.avi.import
+**/*.avi
+**/*.wav.import
+**/*.wav
+
 # Exceptions
 !**/.gitkeep

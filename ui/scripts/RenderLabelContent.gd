@@ -13,12 +13,12 @@ var data = {
 	"game_title": ProjectSettings.get_setting("application/config/name"),
 	"git_version": _git_version,
 	"loader_tip": LevelLoader.get_tip,
-	"input:move_left": _keycode_name(KeyMapping.input["MOVE_LEFT"]),
-	"input:move_right": _keycode_name(KeyMapping.input["MOVE_RIGHT"]),
-	"input:move_up": _keycode_name(KeyMapping.input["MOVE_UP"]),
-	"input:move_down": _keycode_name(KeyMapping.input["MOVE_DOWN"]),
-	"input:move_jump": _keycode_name(KeyMapping.input["MOVE_JUMP"]),
-	"input:move_dash": _keycode_name(KeyMapping.input["MOVE_DASH"]),
+	"input:move_left": func(): return _keycode_name(KeyMapping.input["MOVE_LEFT"]),
+	"input:move_right": func(): return _keycode_name(KeyMapping.input["MOVE_RIGHT"]),
+	"input:move_up": func(): return _keycode_name(KeyMapping.input["MOVE_UP"]),
+	"input:move_down": func(): return _keycode_name(KeyMapping.input["MOVE_DOWN"]),
+	"input:move_jump": func(): return _keycode_name(KeyMapping.input["MOVE_JUMP"]),
+	"input:move_dash": func(): return _keycode_name(KeyMapping.input["MOVE_DASH"]),
 	"level_name": func(): return Game.level_name,
 	"stage_name": func(): return Game.stage_name,
 	"level_stopwatch": _level_stopwatch,
@@ -52,8 +52,8 @@ func _process(_delta) -> void:
 
 # region: Internal Helpers
 
-func _keycode_name(keycode: int) -> Callable:
-	return func(): return OS.get_keycode_string(keycode)
+func _keycode_name(keycode: int) -> String:
+	return OS.get_keycode_string(keycode)
 
 
 func _git_version() -> String:
