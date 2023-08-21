@@ -5,8 +5,8 @@ if [[ -f ".git/PROJECT_INITIALIZED" ]]; then
 	exit 0
 fi
 
-echo "setup-git-version.sh" >> ".git/hooks/post-checkout"
-echo "setup-git-version.sh" >> ".git/hooks/post-commit"
+echo "./setup-git-version.sh" >> ".git/hooks/post-checkout"
+echo "./setup-git-version.sh" >> ".git/hooks/post-commit"
 
 mkdir -p build/web
 mkdir -p build/windows
