@@ -84,11 +84,19 @@ theme_override_font_sizes/font_size = 18
 text = "Your best: {level:best_time}"
 script = ExtResource("1_m2unq")
 
+[node name="BestTime2" type="Label" parent="Viewport/Screen/Layout/Results/Summary"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 18
+text = "Splits:"
+
 [node name="SplitResult" type="MarginContainer" parent="Viewport/Screen/Layout/Results/Summary"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_constants/margin_top = 48
-theme_override_constants/margin_bottom = 48
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
 
 [node name="Splits" type="VBoxContainer" parent="Viewport/Screen/Layout/Results/Summary/SplitResult"]
 layout_mode = 2
@@ -113,6 +121,7 @@ custom_minimum_size = Vector2(96, 48)
 layout_mode = 2
 text = "Retry"
 script = ExtResource("3_88hk7")
+level = 0
 
 [node name="(flex-grow)" type="VSeparator" parent="Viewport/Screen/Layout/Actions"]
 layout_mode = 2
