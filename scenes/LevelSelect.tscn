@@ -68,7 +68,7 @@ custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 text = "Sandbox"
 script = ExtResource("3_oq5dc")
-scene = 3
+scene = 5
 
 [node name="lv0" type="Button" parent="Viewport/Screen/Layout/GridContainer"]
 custom_minimum_size = Vector2(128, 128)

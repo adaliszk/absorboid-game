@@ -4,4 +4,4 @@ extends Button
 
 
 func _pressed() -> void:
-	LevelManager.load_level(level)
+	LevelLoader.load_level(level)
