@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=3 uid="uid://0ao1d80dmh2k"]
+
+[ext_resource type="Script" path="res://ui/scripts/RenderLabelContent.gd" id="1_srcbr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lcrmq"]
+
+[node name="LevelOverlay" type="HBoxContainer"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 26.0
+grow_horizontal = 2
+theme_override_constants/separation = 4
+
+[node name="LevelName" type="Label" parent="."]
+layout_mode = 2
+text = "{level_name}:"
+script = ExtResource("1_srcbr")
+
+[node name="StageName" type="Label" parent="."]
+layout_mode = 2
+text = "{stage_name}"
+script = ExtResource("1_srcbr")
+
+[node name="(flex-grow)" type="VSeparator" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/separator = SubResource("StyleBoxEmpty_lcrmq")
+
+[node name="LevelTimer" type="Label" parent="."]
+layout_mode = 2
+text = "00:00.00"
