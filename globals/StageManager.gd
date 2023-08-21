@@ -1,7 +1,7 @@
 class_name StageManager
 extends Container
 
-const end_screen = preload("res://scenes/Result.tscn")
+const end_screen = preload("res://scenes/LevelResult.tscn")
 
 var stage_scenes: Array = []
 var current_stage: Node2D
@@ -19,6 +19,7 @@ func _ready() -> void:
 # region: Actions
 
 func next_stage() -> void:
+	Game.level_controller.stopwatch_enabled = false
 	stage_index += 1
 
 	if current_stage:
@@ -26,11 +27,18 @@ func next_stage() -> void:
 
 	if stage_index >= stage_scenes.size():
 		get_tree().change_scene_to_packed(end_screen)
+		Game.level_controller.done()
 		return
 
 	current_stage = stage_scenes[stage_index].instantiate()
 	Game.stage_name = current_stage.name
 	add_child(current_stage)
+
+	# Continue the Stopwatch if it was running
+	if Game.level_controller.stopwatch > 0.0:
+		Game.level_controller.stopwatch_enabled = true
+
+	Game.level_controller.split()
 
 	current_stage.stage_success.connect(func(): next_stage())
 	current_stage.stage_failure.connect(func(): reset_stage())

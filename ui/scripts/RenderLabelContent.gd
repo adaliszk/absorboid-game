@@ -21,6 +21,10 @@ var data = {
 	"input:move_dash": _keycode_name(KeyMapping.input["MOVE_DASH"]),
 	"level_name": func(): return Game.level_name,
 	"stage_name": func(): return Game.stage_name,
+	"level_stopwatch": _level_stopwatch,
+	"level:best_possible": _level_data("best_possible"),
+	"level:best_time": _level_data("best_time"),
+	"level:time": _level_data("time"),
 }
 
 @export var update_on_ready = true
@@ -57,6 +61,20 @@ func _git_version() -> String:
 		return "%s#%s" % ["DEBUG" if OS.is_debug_build() else "RELEASE", Git.Build]
 	return "#%s" % [Git.Commit]
 
+
+func _level_data(prop: String) -> Callable:
+	return func():
+		if (prop in Game.level_data) == false:
+			return "N/A"
+		return Utils.format_time(Game.level_data[prop])
+
+
+func _level_stopwatch() -> String:
+	var time = Game.level_controller.stopwatch
+	time = time if time != null else 0.0
+	return Utils.format_time(time)
+
+
 # endregion
 
 # region: Actions
@@ -69,7 +87,7 @@ func render() -> void:
 		var value = data[key]
 		if value is Callable:
 			value = value.call()
-		Log.debug("Found:{%s}, Value:%s" % [key, value])
+		Log.verbose("Found:{%s}, Value:%s" % [key, value])
 		self.text = template.replace("{%s}" % key, value)
 
 # endregion

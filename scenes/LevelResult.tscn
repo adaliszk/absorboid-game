@@ -1,0 +1,125 @@
+[gd_scene load_steps=8 format=3 uid="uid://c3t2mxe1tw55i"]
+
+[ext_resource type="Script" path="res://ui/scripts/RenderLabelContent.gd" id="1_m2unq"]
+[ext_resource type="Script" path="res://ui/actions/SwitchToScene.gd" id="2_82ix4"]
+[ext_resource type="Script" path="res://ui/scripts/RenderSplits.gd" id="2_djxfc"]
+[ext_resource type="PackedScene" uid="uid://dmwloprpiyah0" path="res://ui/BottomPanel.tscn" id="3_6k844"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h0l28"]
+
+[sub_resource type="Theme" id="Theme_yqsft"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lqpyu"]
+
+[node name="Result" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Viewport" type="AspectRatioContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+ratio = 1.4
+stretch_mode = 1
+
+[node name="Screen" type="MarginContainer" parent="Viewport"]
+custom_minimum_size = Vector2(800, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/margin_left = 48
+theme_override_constants/margin_top = 48
+theme_override_constants/margin_right = 48
+theme_override_constants/margin_bottom = 48
+
+[node name="Layout" type="VBoxContainer" parent="Viewport/Screen"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="ScreenTitle" type="Label" parent="Viewport/Screen/Layout"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "LEVEL DONE!"
+uppercase = true
+script = ExtResource("1_m2unq")
+
+[node name="(spacer)1" type="HSeparator" parent="Viewport/Screen/Layout"]
+layout_mode = 2
+theme_override_constants/separation = 32
+theme_override_styles/separator = SubResource("StyleBoxEmpty_h0l28")
+
+[node name="Results" type="HBoxContainer" parent="Viewport/Screen/Layout"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Summary" type="VBoxContainer" parent="Viewport/Screen/Layout/Results"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="LevelTime" type="Label" parent="Viewport/Screen/Layout/Results/Summary"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 18
+text = "Your time: {level:time}"
+script = ExtResource("1_m2unq")
+
+[node name="BestTime" type="Label" parent="Viewport/Screen/Layout/Results/Summary"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 18
+text = "Your best: {level:best_time}"
+script = ExtResource("1_m2unq")
+
+[node name="Splits" type="VBoxContainer" parent="Viewport/Screen/Layout/Results/Summary"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = SubResource("Theme_yqsft")
+script = ExtResource("2_djxfc")
+
+[node name="Leaderboard" type="VBoxContainer" parent="Viewport/Screen/Layout/Results"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="(spacer)2" type="HSeparator" parent="Viewport/Screen/Layout"]
+layout_mode = 2
+theme_override_constants/separation = 32
+theme_override_styles/separator = SubResource("StyleBoxEmpty_h0l28")
+
+[node name="Actions" type="HBoxContainer" parent="Viewport/Screen/Layout"]
+layout_mode = 2
+
+[node name="Retry" type="Button" parent="Viewport/Screen/Layout/Actions"]
+custom_minimum_size = Vector2(96, 48)
+layout_mode = 2
+text = "Retry"
+script = ExtResource("2_82ix4")
+scene = 3
+
+[node name="(flex-grow)" type="VSeparator" parent="Viewport/Screen/Layout/Actions"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/separator = SubResource("StyleBoxEmpty_lqpyu")
+
+[node name="Next" type="Button" parent="Viewport/Screen/Layout/Actions"]
+custom_minimum_size = Vector2(96, 48)
+layout_mode = 2
+text = "Next"
+script = ExtResource("2_82ix4")
+scene = 2
+
+[node name="BottomPanel" parent="." instance=ExtResource("3_6k844")]

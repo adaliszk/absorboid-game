@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://d226qeifcuum" path="res://game/interactables/StageEnd.tscn" id="3_xhdqg"]
 [ext_resource type="PackedScene" uid="uid://c3e7l126blnup" path="res://game/entities/Player.tscn" id="4_00ar4"]
 
-[node name="HELLO!" type="Node2D"]
+[node name="Jump" type="Node2D"]
 script = ExtResource("1_14plp")
 
 [node name="TileMap" type="TileMap" parent="."]
