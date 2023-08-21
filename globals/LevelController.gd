@@ -5,6 +5,7 @@ extends Node2D
 
 var stopwatch_enabled: bool = false
 var stopwatch: float = 0.0
+var last_split: float = 0.0
 var splits: PackedFloat32Array = []
 var data: Dictionary = {}
 
@@ -80,8 +81,9 @@ func save() -> void:
 # region: Internal Logic
 
 func _split() -> void:
-	var last_split = splits[splits.size() - 1] if splits.size() > 0 else 0.0
 	splits.append(stopwatch - last_split)
+	last_split = stopwatch
+
 
 func _merge_saves(previous: Dictionary, current: Dictionary) -> Dictionary:
 	# Carry over the best splits

@@ -17,6 +17,7 @@ var settings: Dictionary = {}
 
 var level_controller: LevelController = null
 var level_data: Dictionary = {}
+var level: LevelLoader.Level = LevelLoader.Level.lv0_tutorial
 
 var level_name: String = "N/A":
 	set(value):
