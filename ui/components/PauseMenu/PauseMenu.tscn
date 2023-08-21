@@ -1,0 +1,124 @@
+[gd_scene load_steps=8 format=3 uid="uid://btircfjumr4oj"]
+
+[ext_resource type="Script" path="res://ui/components/PauseMenu/PauseMenuController.gd" id="1_3umbh"]
+[ext_resource type="Texture2D" uid="uid://u0xil4qoth23" path="res://ui/icons/menu.svg" id="1_wramw"]
+[ext_resource type="Texture2D" uid="uid://cb0nvg2qmixpk" path="res://ui/icons/arrow-collapse-left.svg" id="3_wv1ay"]
+[ext_resource type="Script" path="res://ui/actions/SwitchToScene.gd" id="4_ejuv1"]
+[ext_resource type="Script" path="res://ui/actions/LoadLevel.gd" id="4_sfalk"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yu2un"]
+content_margin_left = 48.0
+content_margin_top = 4.0
+content_margin_right = 48.0
+content_margin_bottom = 48.0
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qspwk"]
+
+[node name="PauseMenu" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3umbh")
+
+[node name="TopOverlay" type="MarginContainer" parent="."]
+z_index = 91
+y_sort_enabled = true
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+theme_override_constants/margin_left = 48
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 48
+theme_override_constants/margin_bottom = 4
+
+[node name="Layout" type="HBoxContainer" parent="TopOverlay"]
+layout_mode = 2
+
+[node name="Toggle" type="Button" parent="TopOverlay/Layout"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+icon = ExtResource("1_wramw")
+expand_icon = true
+
+[node name="Drawer" type="PanelContainer" parent="."]
+z_index = 99
+y_sort_enabled = true
+custom_minimum_size = Vector2(320, 0)
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = -320.0
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_yu2un")
+
+[node name="Layout" type="VBoxContainer" parent="Drawer"]
+layout_mode = 2
+
+[node name="Header" type="HBoxContainer" parent="Drawer/Layout"]
+layout_mode = 2
+
+[node name="Close" type="Button" parent="Drawer/Layout/Header"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+icon = ExtResource("3_wv1ay")
+expand_icon = true
+
+[node name="Title" type="Label" parent="Drawer/Layout/Header"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 22
+text = "Paused"
+horizontal_alignment = 1
+vertical_alignment = 2
+uppercase = true
+
+[node name="(spacer)1" type="HSeparator" parent="Drawer/Layout"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_qspwk")
+
+[node name="Continue" type="Button" parent="Drawer/Layout"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+text = "  Continue"
+alignment = 0
+
+[node name="Restart" type="Button" parent="Drawer/Layout"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+text = "  Restart"
+alignment = 0
+script = ExtResource("4_sfalk")
+level = 0
+
+[node name="Settings" type="Button" parent="Drawer/Layout"]
+visible = false
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+text = "  Settings"
+alignment = 0
+
+[node name="Levels" type="Button" parent="Drawer/Layout"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+text = "  Levels"
+alignment = 0
+script = ExtResource("4_ejuv1")
+scene = 2
+
+[node name="Exit" type="Button" parent="Drawer/Layout"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+text = "  Exit"
+alignment = 0
+script = ExtResource("4_ejuv1")
+
+[connection signal="pressed" from="TopOverlay/Layout/Toggle" to="." method="toggle"]
+[connection signal="pressed" from="Drawer/Layout/Header/Close" to="." method="toggle"]
+[connection signal="pressed" from="Drawer/Layout/Continue" to="." method="toggle"]
