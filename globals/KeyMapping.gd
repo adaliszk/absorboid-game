@@ -25,7 +25,11 @@ const presets = [
 	}
 ]
 
-static var current: Type = Type.QWERTY
+static var current: Type = Type.QWERTY:
+	set(value):
+		Game.settings["keyboard_layout"] = value
+		current = value
+
 static var input: Dictionary:
 	get:
 		return presets[current]
