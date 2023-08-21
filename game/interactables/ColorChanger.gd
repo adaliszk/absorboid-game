@@ -1,6 +1,8 @@
 @tool
 extends Area2D
 
+@export var size: int = 32
+
 @export var color: Game.ColorIndex = Game.ColorIndex.Default:
 	set(value):
 		color = value
