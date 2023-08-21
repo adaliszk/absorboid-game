@@ -9,6 +9,7 @@ func _ready() -> void:
 	for option in KeyMapping.Type.keys():
 		add_item(option)
 
+	select(KeyMapping.current)
 	item_selected.connect(func(index): _on_selected(index))
 
 # endregion
