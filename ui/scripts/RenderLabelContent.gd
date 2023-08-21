@@ -11,14 +11,16 @@ var pattern: RegEx:
 
 var data = {
 	"game_title": ProjectSettings.get_setting("application/config/name"),
-	"git_version": "Build#%s" % Git.Build if Git.Build != null else "#%s" % [Git.Commit],
-	"loader_tip": LevelManager.get_tip,
-	"input:move_left": func(): return OS.get_keycode_string(KeyMapping.input["MOVE_LEFT"]),
-	"input:move_right": func(): return OS.get_keycode_string(KeyMapping.input["MOVE_RIGHT"]),
-	"input:move_up": func(): return OS.get_keycode_string(KeyMapping.input["MOVE_UP"]),
-	"input:move_down": func(): return OS.get_keycode_string(KeyMapping.input["MOVE_DOWN"]),
-	"input:move_jump": func(): return OS.get_keycode_string(KeyMapping.input["MOVE_JUMP"]),
-	"input:move_dash": func(): return OS.get_keycode_string(KeyMapping.input["MOVE_DASH"]),
+	"git_version": _git_version,
+	"loader_tip": LevelLoader.get_tip,
+	"input:move_left": _keycode_name(KeyMapping.input["MOVE_LEFT"]),
+	"input:move_right": _keycode_name(KeyMapping.input["MOVE_RIGHT"]),
+	"input:move_up": _keycode_name(KeyMapping.input["MOVE_UP"]),
+	"input:move_down": _keycode_name(KeyMapping.input["MOVE_DOWN"]),
+	"input:move_jump": _keycode_name(KeyMapping.input["MOVE_JUMP"]),
+	"input:move_dash": _keycode_name(KeyMapping.input["MOVE_DASH"]),
+	"level_name": func(): return Game.level_name,
+	"stage_name": func(): return Game.stage_name,
 }
 
 @export var update_on_ready = true
@@ -41,6 +43,19 @@ func _physics_process(_delta: float) -> void:
 func _process(_delta) -> void:
 	if update_on_process:
 		render()
+
+# endregion
+
+# region: Internal Helpers
+
+func _keycode_name(keycode: int) -> Callable:
+	return func(): return OS.get_keycode_string(keycode)
+
+
+func _git_version() -> String:
+	if Git.Build != null:
+		return "%s#%s" % ["DEBUG" if OS.is_debug_build() else "RELEASE", Git.Build]
+	return "#%s" % [Git.Commit]
 
 # endregion
 
