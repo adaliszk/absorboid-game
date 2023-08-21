@@ -3,6 +3,7 @@ extends Node2D
 
 @export var codeName: String = "lv0"
 
+var should_save: bool = false
 var stopwatch_enabled: bool = false
 var stopwatch: float = 0.0
 var last_split: float = 0.0
@@ -48,11 +49,15 @@ func split() -> void:
 
 
 func done() -> void:
+	should_save = true
 	stopwatch_enabled = false
 	_split()
 
 
 func save() -> void:
+	if not should_save:
+		return
+
 	var json = JSON.new()
 	data = {
 		"best_splits": splits,

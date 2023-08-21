@@ -70,6 +70,8 @@ func _level_data(prop: String) -> Callable:
 
 
 func _level_stopwatch() -> String:
+	if Game.level_controller == null:
+		return "N/A"
 	var time = Game.level_controller.stopwatch
 	time = time if time != null else 0.0
 	return Utils.format_time(time)
