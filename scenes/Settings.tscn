@@ -1,9 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://b5ejq7fdqbgo2"]
+[gd_scene load_steps=7 format=3 uid="uid://dsmciywhumntn"]
 
 [ext_resource type="Script" path="res://ui/actions/SetKeyMapping.gd" id="1_dplg0"]
 [ext_resource type="Script" path="res://ui/scripts/RenderLabelContent.gd" id="2_xhusw"]
 [ext_resource type="Script" path="res://ui/actions/SwitchToScene.gd" id="3_1n0fq"]
-[ext_resource type="PackedScene" path="res://ui/BottomPanel.tscn" id="5_8wutw"]
+[ext_resource type="PackedScene" uid="uid://dmwloprpiyah0" path="res://ui/BottomPanel.tscn" id="5_8wutw"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_788t1"]
 
@@ -39,6 +39,7 @@ stretch_mode = 1
 [node name="Screen" type="MarginContainer" parent="Viewport"]
 custom_minimum_size = Vector2(800, 0)
 layout_mode = 2
+size_flags_horizontal = 4
 theme_override_constants/margin_left = 48
 theme_override_constants/margin_top = 48
 theme_override_constants/margin_right = 48

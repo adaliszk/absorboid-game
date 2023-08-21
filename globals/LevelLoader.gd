@@ -52,7 +52,7 @@ func _process(_delta: float) -> void:
 func load_level(level: Level) -> void:
 	get_tree().change_scene_to_file("res://scenes/LevelLoader.tscn")
 	var level_name = Level.keys()[level]
-	target_level = "res://levels/%s/%s.tscn" % [level_name, level_name]
+	target_level = "res://levels/%s/Level.tscn" % [level_name]
 	ResourceLoader.load_threaded_request(target_level)
 	progress.emit(0.0)
 	is_loading = true
