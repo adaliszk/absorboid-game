@@ -14,3 +14,5 @@ static var ColorValue = [
 
 
 static var last_scene: String = "Main"
+static var level_name: String = "N/A"
+static var stage_name: String = "N/A"

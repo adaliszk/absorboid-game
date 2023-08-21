@@ -1,6 +1,6 @@
 extends Button
 
-@export var level: LevelManager.Level = LevelManager.Level.lv0_tutorial
+@export var level: LevelLoader.Level = LevelLoader.Level.lv0_tutorial
 
 
 func _pressed() -> void:

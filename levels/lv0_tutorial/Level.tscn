@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://cmnsrttgio043"]
+
+[ext_resource type="Script" path="res://globals/StageManager.gd" id="1_cghko"]
+[ext_resource type="PackedScene" uid="uid://dmwloprpiyah0" path="res://ui/BottomPanel.tscn" id="1_plnig"]
+[ext_resource type="Script" path="res://levels/lv0_tutorial/LevelController.gd" id="1_wdn28"]
+[ext_resource type="PackedScene" uid="uid://dy1hde6s4n0cf" path="res://ui/TopOverlay.tscn" id="3_4t5w0"]
+
+[node name="Tutorial" type="Node2D"]
+script = ExtResource("1_wdn28")
+
+[node name="Container" type="Container" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_cghko")
+
+[node name="BottomPanel" parent="." instance=ExtResource("1_plnig")]
+
+[node name="TopOverlay" parent="." instance=ExtResource("3_4t5w0")]
