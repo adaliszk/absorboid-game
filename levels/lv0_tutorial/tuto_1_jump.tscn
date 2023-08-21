@@ -1,13 +1,16 @@
-[gd_scene load_steps=7 format=3 uid="uid://c8tnd5y5e23i0"]
+[gd_scene load_steps=9 format=3 uid="uid://c8tnd5y5e23i0"]
 
 [ext_resource type="TileSet" uid="uid://dx2d4lqdb7qg2" path="res://game/assets/sandbox_packed.tres" id="1_33050"]
+[ext_resource type="Script" path="res://globals/StageController.gd" id="1_nrx43"]
 [ext_resource type="PackedScene" uid="uid://c3e7l126blnup" path="res://game/entities/Player.tscn" id="2_na0q3"]
 [ext_resource type="PackedScene" uid="uid://dq7hdnxtl2ru" path="res://game/interactables/ColorChanger.tscn" id="3_qblxl"]
 [ext_resource type="PackedScene" uid="uid://cdltiu2pshqsp" path="res://ui/components/TooltipBubble/TooltipBubble.tscn" id="3_v11mw"]
 [ext_resource type="PackedScene" uid="uid://c8tiu4yx6b378" path="res://game/traits/ShowOnlyForDebug.tscn" id="4_lm4yu"]
 [ext_resource type="PackedScene" uid="uid://rynss7452c7m" path="res://game/traits/SetContentWith.tscn" id="5_i7v86"]
+[ext_resource type="PackedScene" uid="uid://d226qeifcuum" path="res://game/interactables/StageEnd.tscn" id="6_ge0ah"]
 
 [node name="Tuto1jump" type="Node2D"]
+script = ExtResource("1_nrx43")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource("1_33050")
@@ -48,6 +51,9 @@ offset_left = 100.0
 offset_top = -261.0
 offset_right = 140.0
 offset_bottom = -238.0
+
+[node name="StageEnd" parent="TileMap" instance=ExtResource("6_ge0ah")]
+position = Vector2(888, 184)
 
 [node name="Player" parent="." instance=ExtResource("2_na0q3")]
 position = Vector2(156, 211)
