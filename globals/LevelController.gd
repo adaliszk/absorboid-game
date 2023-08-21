@@ -15,6 +15,7 @@ var data: Dictionary = {}
 func _ready() -> void:
 	Game.level_controller = self
 	Game.level_name = name
+	SoundManager.play_music(SoundManager.Music.Gameplay)
 	stopwatch = 0.0
 
 
@@ -33,6 +34,7 @@ func _exit_tree() -> void:
 	save()
 	Game.level_controller = null
 	Game.level_data = data
+	SoundManager.play_music(SoundManager.Music.Menu)
 
 
 # endregion

@@ -1,0 +1,72 @@
+[gd_scene load_steps=4 format=3 uid="uid://dhtcchaaeo7mv"]
+
+[ext_resource type="Script" path="res://globals/SoundManager.gd" id="1_8bm5r"]
+[ext_resource type="AudioStream" uid="uid://cccef06g763m" path="res://music/Pastel - Pastel Sunshine.ogg" id="2_4i8g4"]
+[ext_resource type="AudioStream" uid="uid://c3i5oskklga8j" path="res://music/Drop - Aim Assist.ogg" id="3_e6ypl"]
+
+[node name="SoundManager" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8bm5r")
+
+[node name="Music" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Menu" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource("2_4i8g4")
+
+[node name="Gameplay" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource("3_e6ypl")
+
+[node name="Result" type="AudioStreamPlayer" parent="Music"]
+
+[node name="Effects" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Jump" type="AudioStreamPlayer" parent="Effects"]
+
+[node name="DoubleJump" type="AudioStreamPlayer" parent="Effects"]
+
+[node name="Dash" type="AudioStreamPlayer" parent="Effects"]
+
+[node name="Land" type="AudioStreamPlayer" parent="Effects"]
+
+[node name="PaintSplash" type="AudioStreamPlayer" parent="Effects"]
+
+[node name="PaintAbsorb" type="AudioStreamPlayer" parent="Effects"]
+
+[node name="Damage" type="AudioStreamPlayer" parent="Effects"]
+
+[node name="Perish" type="AudioStreamPlayer" parent="Effects"]
+
+[node name="LevelStart" type="AudioStreamPlayer" parent="Effects"]
+
+[node name="LevelReset" type="AudioStreamPlayer" parent="Effects"]
+
+[node name="StageStart" type="AudioStreamPlayer" parent="Effects"]
+
+[node name="StageEnd" type="AudioStreamPlayer" parent="Effects"]
+
+[node name="LevelEnd" type="AudioStreamPlayer" parent="Effects"]
+
+[node name="UI" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Click" type="AudioStreamPlayer" parent="UI"]
+
+[node name="Select" type="AudioStreamPlayer" parent="UI"]
+
+[node name="Open" type="AudioStreamPlayer" parent="UI"]
+
+[node name="Close" type="AudioStreamPlayer" parent="UI"]

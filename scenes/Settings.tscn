@@ -1,11 +1,25 @@
-[gd_scene load_steps=7 format=3 uid="uid://dsmciywhumntn"]
+[gd_scene load_steps=10 format=3 uid="uid://dsmciywhumntn"]
 
+[ext_resource type="Script" path="res://ui/scripts/VolumeControl.gd" id="1_4nnry"]
 [ext_resource type="Script" path="res://ui/actions/SetKeyMapping.gd" id="1_dplg0"]
 [ext_resource type="Script" path="res://ui/scripts/RenderLabelContent.gd" id="2_xhusw"]
 [ext_resource type="Script" path="res://ui/actions/SwitchToScene.gd" id="3_1n0fq"]
 [ext_resource type="PackedScene" uid="uid://dmwloprpiyah0" path="res://ui/BottomPanel.tscn" id="5_8wutw"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_788t1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iubnc"]
+content_margin_left = 16.0
+content_margin_top = 16.0
+content_margin_right = 16.0
+content_margin_bottom = 16.0
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nmv7e"]
+content_margin_left = 12.0
+content_margin_top = 32.0
+content_margin_right = 12.0
+content_margin_bottom = 32.0
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_u0c7w"]
 
@@ -61,107 +75,218 @@ layout_mode = 2
 theme_override_constants/separation = 32
 theme_override_styles/separator = SubResource("StyleBoxEmpty_788t1")
 
-[node name="SoundVolume" type="HBoxContainer" parent="Viewport/Screen/Layout"]
-visible = false
+[node name="TabContainer" type="TabContainer" parent="Viewport/Screen/Layout"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/tab_selected = SubResource("StyleBoxFlat_iubnc")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_nmv7e")
+
+[node name="Sound" type="ScrollContainer" parent="Viewport/Screen/Layout/TabContainer"]
+layout_mode = 2
+horizontal_scroll_mode = 3
+
+[node name="Layout" type="VBoxContainer" parent="Viewport/Screen/Layout/TabContainer/Sound"]
+layout_mode = 2
+
+[node name="MasterVolume" type="HBoxContainer" parent="Viewport/Screen/Layout/TabContainer/Sound/Layout"]
 layout_mode = 2
 theme_override_constants/separation = 4
 
-[node name="Label" type="Label" parent="Viewport/Screen/Layout/SoundVolume"]
+[node name="Label" type="Label" parent="Viewport/Screen/Layout/TabContainer/Sound/Layout/MasterVolume"]
 custom_minimum_size = Vector2(196, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Master Volume"
 
-[node name="HSlider" type="HSlider" parent="Viewport/Screen/Layout/SoundVolume"]
+[node name="HSlider" type="HSlider" parent="Viewport/Screen/Layout/TabContainer/Sound/Layout/MasterVolume"]
+custom_minimum_size = Vector2(320, 32)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 tick_count = 5
 ticks_on_borders = true
+script = ExtResource("1_4nnry")
 
-[node name="VSeparator" type="VSeparator" parent="Viewport/Screen/Layout/SoundVolume"]
+[node name="VSeparator" type="VSeparator" parent="Viewport/Screen/Layout/TabContainer/Sound/Layout/MasterVolume"]
 layout_mode = 2
 theme_override_constants/separation = 16
 theme_override_styles/separator = SubResource("StyleBoxEmpty_u0c7w")
 
-[node name="Help" type="Label" parent="Viewport/Screen/Layout/SoundVolume"]
+[node name="Help" type="Label" parent="Viewport/Screen/Layout/TabContainer/Sound/Layout/MasterVolume"]
 custom_minimum_size = Vector2(320, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.592157, 0.592157, 0.592157, 1)
 theme_override_font_sizes/font_size = 12
-text = "Controls all sound volume"
 
-[node name="KeyboardLayout" type="HBoxContainer" parent="Viewport/Screen/Layout"]
+[node name="MusicVolume" type="HBoxContainer" parent="Viewport/Screen/Layout/TabContainer/Sound/Layout"]
 layout_mode = 2
 theme_override_constants/separation = 4
 
-[node name="Label" type="Label" parent="Viewport/Screen/Layout/KeyboardLayout"]
+[node name="Label" type="Label" parent="Viewport/Screen/Layout/TabContainer/Sound/Layout/MusicVolume"]
+custom_minimum_size = Vector2(196, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Music Volume"
+
+[node name="HSlider" type="HSlider" parent="Viewport/Screen/Layout/TabContainer/Sound/Layout/MusicVolume"]
+custom_minimum_size = Vector2(320, 32)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+step = 0.1
+tick_count = 5
+ticks_on_borders = true
+script = ExtResource("1_4nnry")
+channel = 0
+
+[node name="VSeparator" type="VSeparator" parent="Viewport/Screen/Layout/TabContainer/Sound/Layout/MusicVolume"]
+layout_mode = 2
+theme_override_constants/separation = 16
+theme_override_styles/separator = SubResource("StyleBoxEmpty_u0c7w")
+
+[node name="Help" type="Label" parent="Viewport/Screen/Layout/TabContainer/Sound/Layout/MusicVolume"]
+custom_minimum_size = Vector2(320, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.592157, 0.592157, 0.592157, 1)
+theme_override_font_sizes/font_size = 12
+
+[node name="EffectVolume" type="HBoxContainer" parent="Viewport/Screen/Layout/TabContainer/Sound/Layout"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="Label" type="Label" parent="Viewport/Screen/Layout/TabContainer/Sound/Layout/EffectVolume"]
+custom_minimum_size = Vector2(196, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Effect Volume"
+
+[node name="HSlider" type="HSlider" parent="Viewport/Screen/Layout/TabContainer/Sound/Layout/EffectVolume"]
+custom_minimum_size = Vector2(320, 32)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+step = 0.1
+tick_count = 5
+ticks_on_borders = true
+script = ExtResource("1_4nnry")
+channel = 1
+
+[node name="VSeparator" type="VSeparator" parent="Viewport/Screen/Layout/TabContainer/Sound/Layout/EffectVolume"]
+layout_mode = 2
+theme_override_constants/separation = 16
+theme_override_styles/separator = SubResource("StyleBoxEmpty_u0c7w")
+
+[node name="Help" type="Label" parent="Viewport/Screen/Layout/TabContainer/Sound/Layout/EffectVolume"]
+custom_minimum_size = Vector2(320, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.592157, 0.592157, 0.592157, 1)
+theme_override_font_sizes/font_size = 12
+
+[node name="UIVolume" type="HBoxContainer" parent="Viewport/Screen/Layout/TabContainer/Sound/Layout"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="Label" type="Label" parent="Viewport/Screen/Layout/TabContainer/Sound/Layout/UIVolume"]
+custom_minimum_size = Vector2(196, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "UI Volume"
+
+[node name="HSlider" type="HSlider" parent="Viewport/Screen/Layout/TabContainer/Sound/Layout/UIVolume"]
+custom_minimum_size = Vector2(320, 32)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+step = 0.1
+tick_count = 5
+ticks_on_borders = true
+script = ExtResource("1_4nnry")
+channel = 2
+
+[node name="VSeparator" type="VSeparator" parent="Viewport/Screen/Layout/TabContainer/Sound/Layout/UIVolume"]
+layout_mode = 2
+theme_override_constants/separation = 16
+theme_override_styles/separator = SubResource("StyleBoxEmpty_u0c7w")
+
+[node name="Help" type="Label" parent="Viewport/Screen/Layout/TabContainer/Sound/Layout/UIVolume"]
+custom_minimum_size = Vector2(320, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.592157, 0.592157, 0.592157, 1)
+theme_override_font_sizes/font_size = 12
+
+[node name="Keyboard" type="ScrollContainer" parent="Viewport/Screen/Layout/TabContainer"]
+layout_mode = 2
+horizontal_scroll_mode = 3
+
+[node name="Layout" type="VBoxContainer" parent="Viewport/Screen/Layout/TabContainer/Keyboard"]
+layout_mode = 2
+
+[node name="KeyboardLayout" type="HBoxContainer" parent="Viewport/Screen/Layout/TabContainer/Keyboard/Layout"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="Label" type="Label" parent="Viewport/Screen/Layout/TabContainer/Keyboard/Layout/KeyboardLayout"]
 custom_minimum_size = Vector2(196, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Keyboard Layout"
 
-[node name="OptionButton" type="OptionButton" parent="Viewport/Screen/Layout/KeyboardLayout"]
+[node name="OptionButton" type="OptionButton" parent="Viewport/Screen/Layout/TabContainer/Keyboard/Layout/KeyboardLayout"]
 layout_mode = 2
 size_flags_horizontal = 3
 allow_reselect = true
 script = ExtResource("1_dplg0")
 
-[node name="VSeparator" type="VSeparator" parent="Viewport/Screen/Layout/KeyboardLayout"]
+[node name="VSeparator" type="VSeparator" parent="Viewport/Screen/Layout/TabContainer/Keyboard/Layout/KeyboardLayout"]
 layout_mode = 2
 theme_override_constants/separation = 16
 theme_override_styles/separator = SubResource("StyleBoxEmpty_u0c7w")
 
-[node name="Help" type="Label" parent="Viewport/Screen/Layout/KeyboardLayout"]
+[node name="Help" type="Label" parent="Viewport/Screen/Layout/TabContainer/Keyboard/Layout/KeyboardLayout"]
 custom_minimum_size = Vector2(320, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.592157, 0.592157, 0.592157, 1)
 theme_override_font_sizes/font_size = 12
 text = "Switches keyboard mapping presets"
 
-[node name="KeyboardHint" type="HBoxContainer" parent="Viewport/Screen/Layout"]
+[node name="KeyboardHint" type="HBoxContainer" parent="Viewport/Screen/Layout/TabContainer/Keyboard/Layout"]
 layout_mode = 2
 theme_override_constants/separation = 4
 
-[node name="Spacer" type="VSeparator" parent="Viewport/Screen/Layout/KeyboardHint"]
+[node name="Spacer" type="VSeparator" parent="Viewport/Screen/Layout/TabContainer/Keyboard/Layout/KeyboardHint"]
 custom_minimum_size = Vector2(196, 0)
 layout_mode = 2
 theme_override_constants/separation = 16
 theme_override_styles/separator = SubResource("StyleBoxEmpty_u0c7w")
 
-[node name="GridContainer" type="GridContainer" parent="Viewport/Screen/Layout/KeyboardHint"]
+[node name="Key" type="GridContainer" parent="Viewport/Screen/Layout/TabContainer/Keyboard/Layout/KeyboardHint"]
 layout_mode = 2
 theme_override_constants/h_separation = 4
 theme_override_constants/v_separation = 4
 
-[node name="MOVE_LEFT" type="Label" parent="Viewport/Screen/Layout/KeyboardHint/GridContainer"]
+[node name="MOVE_LEFT" type="Label" parent="Viewport/Screen/Layout/TabContainer/Keyboard/Layout/KeyboardHint/Key"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "{input:move_left}: Move Left"
 script = ExtResource("2_xhusw")
 
-[node name="MOVE_RIGHT" type="Label" parent="Viewport/Screen/Layout/KeyboardHint/GridContainer"]
+[node name="MOVE_RIGHT" type="Label" parent="Viewport/Screen/Layout/TabContainer/Keyboard/Layout/KeyboardHint/Key"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "{input:move_right}: Move Right"
 script = ExtResource("2_xhusw")
 
-[node name="MOVE_JUMP" type="Label" parent="Viewport/Screen/Layout/KeyboardHint/GridContainer"]
+[node name="MOVE_JUMP" type="Label" parent="Viewport/Screen/Layout/TabContainer/Keyboard/Layout/KeyboardHint/Key"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "{input:move_jump}: Jump from the ground, or double-jump in the air"
 script = ExtResource("2_xhusw")
 
-[node name="MOVE_DASH" type="Label" parent="Viewport/Screen/Layout/KeyboardHint/GridContainer"]
+[node name="MOVE_DASH" type="Label" parent="Viewport/Screen/Layout/TabContainer/Keyboard/Layout/KeyboardHint/Key"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "{input:move_dash}: Dash in the direction of the movement"
 script = ExtResource("2_xhusw")
-
-[node name="HSeparator2" type="HSeparator" parent="Viewport/Screen/Layout"]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_styles/separator = SubResource("StyleBoxEmpty_788t1")
 
 [node name="Actions" type="HBoxContainer" parent="Viewport/Screen/Layout"]
 layout_mode = 2
@@ -174,7 +299,8 @@ script = ExtResource("3_1n0fq")
 
 [node name="BottomPanel" parent="." instance=ExtResource("5_8wutw")]
 
-[connection signal="item_applied" from="Viewport/Screen/Layout/KeyboardLayout/OptionButton" to="Viewport/Screen/Layout/KeyboardHint/GridContainer/MOVE_LEFT" method="render"]
-[connection signal="item_applied" from="Viewport/Screen/Layout/KeyboardLayout/OptionButton" to="Viewport/Screen/Layout/KeyboardHint/GridContainer/MOVE_RIGHT" method="render"]
-[connection signal="item_applied" from="Viewport/Screen/Layout/KeyboardLayout/OptionButton" to="Viewport/Screen/Layout/KeyboardHint/GridContainer/MOVE_JUMP" method="render"]
-[connection signal="item_applied" from="Viewport/Screen/Layout/KeyboardLayout/OptionButton" to="Viewport/Screen/Layout/KeyboardHint/GridContainer/MOVE_DASH" method="render"]
+[connection signal="item_applied" from="Viewport/Screen/Layout/TabContainer/Keyboard/Layout/KeyboardLayout/OptionButton" to="Viewport/Screen/Layout/TabContainer/Keyboard/Layout/KeyboardHint/Key/MOVE_LEFT" method="render"]
+[connection signal="item_applied" from="Viewport/Screen/Layout/TabContainer/Keyboard/Layout/KeyboardLayout/OptionButton" to="Viewport/Screen/Layout/TabContainer/Keyboard/Layout/KeyboardHint/Key/MOVE_RIGHT" method="render"]
+[connection signal="item_applied" from="Viewport/Screen/Layout/TabContainer/Keyboard/Layout/KeyboardLayout/OptionButton" to="Viewport/Screen/Layout/TabContainer/Keyboard/Layout/KeyboardHint/Key/MOVE_JUMP" method="render"]
+[connection signal="item_applied" from="Viewport/Screen/Layout/TabContainer/Keyboard/Layout/KeyboardLayout/OptionButton" to="Viewport/Screen/Layout/TabContainer/Keyboard/Layout/KeyboardHint/Key/MOVE_DASH" method="render"]
+[connection signal="item_selected" from="Viewport/Screen/Layout/TabContainer/Keyboard/Layout/KeyboardLayout/OptionButton" to="Viewport/Screen/Layout/TabContainer/Keyboard/Layout/KeyboardLayout/OptionButton" method="_on_selected"]

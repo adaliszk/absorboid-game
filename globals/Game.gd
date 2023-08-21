@@ -1,5 +1,9 @@
 extends Node
 
+
+signal settings_loaded(settings: Dictionary)
+
+
 enum ColorIndex { Default, Color1, Color2, Color3, Color4 }
 
 const SETTINGS_FILE = "user://settings.json"
@@ -45,6 +49,7 @@ func _ready() -> void:
 		settings = json.get_data()
 		Log.debug("Parsed:%s" % settings)
 		settings_handler.close()
+	settings_loaded.emit(settings)
 
 	if "keyboard_layout" in settings:
 		Log.debug("Keyboard Layout found in settings, applying...")
