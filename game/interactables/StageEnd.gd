@@ -21,6 +21,6 @@ func _notification(what):
 
 
 func _get_configuration_warnings() -> PackedStringArray:
-	return Traits.get_children_configuration_warnings(self)
+	return Utils.get_children_configuration_warnings(self)
 
 # endregion

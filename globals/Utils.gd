@@ -1,4 +1,4 @@
-class_name Traits
+class_name Utils
 extends Node
 
 
@@ -13,3 +13,10 @@ static func get_children_configuration_warnings(node: Node) -> PackedStringArray
 			shared_warnings.append_array(warnings)
 
 	return shared_warnings
+
+
+static func format_time(time: float) -> String:
+	var minutes = floori(time / 60.0)
+	var seconds = floori(floori(time) % 60)
+	var milliseconds = floori((time - floori(time)) * 1000)
+	return "%02d:%02d.%03d" % [minutes, seconds, milliseconds]
