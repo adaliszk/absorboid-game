@@ -109,6 +109,7 @@ func handle_inputs(event) -> void:
 func apply_gravity(delta) -> void:
 	if not is_on_floor():
 		if should_be_sticky and color_index == Game.ColorIndex.Sticky:
+			velocity.y = velocity.y if velocity.y < 0.0 else 0.0
 			return
 		velocity.y += gravity * delta
 
