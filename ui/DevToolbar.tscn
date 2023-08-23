@@ -1,0 +1,61 @@
+[gd_scene load_steps=5 format=3 uid="uid://1gnxv1kys7ai"]
+
+[ext_resource type="Script" path="res://ui/traits/ShowOnlyForDebug.gd" id="1_mevnd"]
+[ext_resource type="Script" path="res://ui/actions/SwitchToScene.gd" id="1_qbnjr"]
+[ext_resource type="Script" path="res://ui/actions/RestartScene.gd" id="3_03nih"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c3wki"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[node name="DevToolbar" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_mevnd")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -120.0
+offset_bottom = 117.0
+grow_horizontal = 0
+theme_override_constants/margin_top = 64
+theme_override_constants/margin_right = 16
+metadata/_edit_use_anchors_ = true
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_styles/panel = SubResource("StyleBoxFlat_c3wki")
+metadata/_edit_use_anchors_ = true
+
+[node name="Layout" type="VBoxContainer" parent="MarginContainer/PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_constants/separation = 8
+
+[node name="MainMenu" type="Button" parent="MarginContainer/PanelContainer/Layout"]
+layout_mode = 2
+size_flags_horizontal = 5
+text = "MAIN MENU"
+script = ExtResource("1_qbnjr")
+
+[node name="SelectLevel" type="Button" parent="MarginContainer/PanelContainer/Layout"]
+layout_mode = 2
+size_flags_horizontal = 5
+text = "SELECT LEVEL"
+script = ExtResource("1_qbnjr")
+scene = 1
+
+[node name="Reload" type="Button" parent="MarginContainer/PanelContainer/Layout"]
+layout_mode = 2
+size_flags_horizontal = 5
+text = "RELOAD"
+script = ExtResource("3_03nih")
