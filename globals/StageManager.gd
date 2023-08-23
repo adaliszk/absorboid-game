@@ -23,7 +23,7 @@ func next_stage() -> void:
 	stage_index += 1
 
 	if current_stage:
-		remove_child(current_stage)
+		current_stage.queue_free()
 
 	if stage_index >= stage_scenes.size():
 		get_tree().change_scene_to_packed(end_screen)
