@@ -4,11 +4,11 @@ extends Node
 signal settings_loaded(settings: Dictionary)
 
 
-enum ColorIndex { Default, Color1, Color2, Color3, Color4 }
+enum ColorIndex { Default, DoubleJump, Dash, Sticky, Float }
 
 const SETTINGS_FILE = "user://settings.json"
 
-const ColorName = ["Default", "Color1", "Color2", "Color3", "Color4"]
+const ColorName = ["Default", "DoubleJump", "Dash", "Sticky", "Float"]
 var ColorValue = [
 	ProjectSettings.get_setting("game/config/default_color"),
 	ProjectSettings.get_setting("game/config/color1"),
