@@ -63,4 +63,6 @@ position = Vector2(40, 264)
 position = Vector2(88, 56)
 
 [node name="Player" parent="." instance=ExtResource("6_2hc7h")]
-position = Vector2(544, 385)
+position = Vector2(56, 538)
+
+[connection signal="body_entered" from="TileMap/StageEnd" to="." method="trigger_success"]

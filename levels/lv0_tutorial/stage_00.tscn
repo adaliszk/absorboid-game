@@ -28,3 +28,5 @@ position = Vector2(152, 584)
 
 [node name="Player" parent="." instance=ExtResource("5_y28pn")]
 position = Vector2(350, 374)
+
+[connection signal="body_entered" from="TileMap/StageEnd" to="." method="trigger_success"]

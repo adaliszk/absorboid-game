@@ -95,3 +95,5 @@ offset_left = 163.5
 offset_top = 256.0
 offset_right = 203.5
 offset_bottom = 279.0
+
+[connection signal="body_entered" from="TileMap/StageEnd" to="." method="trigger_success"]
