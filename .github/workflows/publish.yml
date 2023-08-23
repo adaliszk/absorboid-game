@@ -61,7 +61,7 @@ jobs:
       -
         name: 🦺 Build Export
         run: |
-          godot --headless --verbose --export-debug "${{ matrix.export }}" ./build/${{ matrix.export }}/${{ matrix.output }}
+          godot --headless --verbose --export-release "${{ matrix.export }}" ./build/${{ matrix.export }}/${{ matrix.output }}
       -
         name: 🔬 Verify Files
         run: |
