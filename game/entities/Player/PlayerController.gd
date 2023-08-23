@@ -19,6 +19,8 @@ var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 var color_index: Game.ColorIndex = Game.ColorIndex.Default:
 	set(value):
+		if sprite != null:
+			sprite.modulate = Game.ColorValue[value]
 		emit_signal("color_change", color_index, value)
 		color_index = value
 
@@ -50,6 +52,8 @@ func _ready() -> void:
 func _physics_process(delta) -> void:
 	should_be_sticky = is_on_wall()
 	apply_gravity(delta)
+
+	sprite.flip_h = velocity.x < 0.0
 
 	dash_energy -= DASH_FALLOFF
 	dash_energy = dash_energy if dash_energy > 0.0 else 0.0

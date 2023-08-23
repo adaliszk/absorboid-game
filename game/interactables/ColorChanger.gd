@@ -83,7 +83,7 @@ func on_body_entered(body: Node2D, _event) -> void:
 	if body is Player and body.color_index != color:
 		SoundManager.play("Color%s" % color)
 		body.switch_color(color)
-		body.connect("color_change", func(_old, _new, _event): has_charge = true, CONNECT_ONE_SHOT)
-		has_charge = false
+		# body.connect("color_change", func(_old, _new, _event): has_charge = true, CONNECT_ONE_SHOT)
+		# has_charge = false
 
 # endregion

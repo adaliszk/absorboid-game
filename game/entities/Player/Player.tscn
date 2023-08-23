@@ -1,9 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://c3e7l126blnup"]
 
 [ext_resource type="Script" path="res://game/entities/Player/PlayerController.gd" id="1_vjglu"]
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_r83gb"]
-size = Vector2(32, 32)
+[ext_resource type="Texture2D" uid="uid://sq1dr0f3bv2j" path="res://game/assets/player.png" id="2_4pe65"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vj60w"]
 size = Vector2(31.75, 32.25)
@@ -20,7 +18,8 @@ drag_horizontal_enabled = true
 drag_vertical_enabled = true
 
 [node name="Sprite" type="Sprite2D" parent="."]
-texture = SubResource("PlaceholderTexture2D_r83gb")
+texture_filter = 1
+texture = ExtResource("2_4pe65")
 
 [node name="Collider" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_vj60w")
