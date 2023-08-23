@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://globals/StageController.gd" id="1_0jfak"]
 [ext_resource type="TileSet" uid="uid://dx2d4lqdb7qg2" path="res://game/assets/sandbox_packed.tres" id="1_rva1v"]
 [ext_resource type="PackedScene" uid="uid://dq7hdnxtl2ru" path="res://game/interactables/ColorChanger.tscn" id="2_s8ak1"]
-[ext_resource type="PackedScene" uid="uid://c3e7l126blnup" path="res://game/entities/Player.tscn" id="6_2hc7h"]
+[ext_resource type="PackedScene" uid="uid://c3e7l126blnup" path="res://game/entities/Player/Player.tscn" id="6_2hc7h"]
 [ext_resource type="PackedScene" uid="uid://d226qeifcuum" path="res://game/interactables/StageEnd.tscn" id="7_r8xse"]
 
 [node name="stage02" type="Node2D"]
@@ -58,9 +58,6 @@ color = 3
 
 [node name="redChanger2" parent="TileMap" instance=ExtResource("2_s8ak1")]
 position = Vector2(40, 264)
-collision_layer = 1
-collision_mask = 1
-color = 1
 
 [node name="StageEnd" parent="TileMap" instance=ExtResource("7_r8xse")]
 position = Vector2(88, 56)

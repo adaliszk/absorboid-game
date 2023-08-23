@@ -79,7 +79,6 @@ func on_body_entered(body: Node2D, _event) -> void:
 	Log.debug("has_charge:%s, body:%s" % [has_charge, body])
 	if not has_charge:
 		return
-	if body is Player and body.color_index == Game.ColorIndex.Default:
-		body.switch_color(color)
+	body.switch_color(color)
 
 # endregion
