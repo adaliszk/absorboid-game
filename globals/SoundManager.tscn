@@ -1,8 +1,9 @@
-[gd_scene load_steps=16 format=3 uid="uid://dhtcchaaeo7mv"]
+[gd_scene load_steps=17 format=3 uid="uid://dhtcchaaeo7mv"]
 
 [ext_resource type="Script" path="res://globals/SoundManager.gd" id="1_8bm5r"]
 [ext_resource type="AudioStream" uid="uid://bwopjqbsmhwxu" path="res://music/game_loop.ogg" id="2_r11ts"]
 [ext_resource type="AudioStream" uid="uid://bpxpf18lwlyd2" path="res://music/menu_loop.ogg" id="3_2x8n1"]
+[ext_resource type="Script" path="res://game/traits/RepeatTracks.gd" id="3_u4psi"]
 [ext_resource type="AudioStream" path="res://sounds/color_absorb1.ogg" id="4_vfwd4"]
 [ext_resource type="AudioStream" path="res://sounds/color_absorb2.ogg" id="5_qrew4"]
 [ext_resource type="AudioStream" path="res://sounds/color_absorb3.ogg" id="6_21204"]
@@ -33,13 +34,17 @@ offset_bottom = 40.0
 
 [node name="Menu" type="AudioStreamPlayer" parent="Music"]
 stream = ExtResource("3_2x8n1")
+script = ExtResource("3_u4psi")
 
 [node name="Gameplay" type="AudioStreamPlayer" parent="Music"]
 stream = ExtResource("2_r11ts")
+script = ExtResource("3_u4psi")
 
 [node name="GameplayStart" type="AudioStreamPlayer" parent="Music"]
+script = ExtResource("3_u4psi")
 
 [node name="MenuEnd" type="AudioStreamPlayer" parent="Music"]
+script = ExtResource("3_u4psi")
 
 [node name="Effects" type="Control" parent="."]
 anchors_preset = 0
