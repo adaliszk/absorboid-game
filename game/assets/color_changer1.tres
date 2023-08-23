@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://bonnvyy8aa1k1"]
+
+[ext_resource type="Texture2D" uid="uid://bf08uyvw600tl" path="res://game/assets/color_changer.png" id="1_g1eqp"]
+
+[resource]
+atlas = ExtResource("1_g1eqp")
+region = Rect2(0, 0, 30, 30)
