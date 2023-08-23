@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://c3e7l126blnup"]
+
+[ext_resource type="Script" path="res://game/entities/Player/PlayerController.gd" id="1_vjglu"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_r83gb"]
+size = Vector2(32, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vj60w"]
+size = Vector2(40, 39)
+
+[node name="Player" type="CharacterBody2D"]
+collision_layer = 255
+collision_mask = 16
+floor_stop_on_slope = false
+script = ExtResource("1_vjglu")
+
+[node name="Camera" type="Camera2D" parent="."]
+position_smoothing_enabled = true
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = SubResource("PlaceholderTexture2D_r83gb")
+
+[node name="StickyDetector" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 16
+
+[node name="Area" type="CollisionShape2D" parent="StickyDetector"]
+shape = SubResource("RectangleShape2D_vj60w")
+
+[node name="Collider" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_vj60w")
+
+[connection signal="body_entered" from="StickyDetector" to="." method="stick_to_wall"]
