@@ -14,8 +14,9 @@ extends Area2D
 
 var has_charge: bool = true:
 	set(value):
+		Log.debug("has_charge:%s" % value)
 		if charge != null:
-			charge.visible = value
+			charge.play("spawn" if value else "consume")
 		has_charge = value
 
 var color_name: String:
@@ -77,9 +78,12 @@ func update_platform_sprite() -> void:
 
 func on_body_entered(body: Node2D, _event) -> void:
 	Log.debug("has_charge:%s, body:%s" % [has_charge, body])
-	if not has_charge:
+	if not has_charge or color == Game.ColorIndex.Default:
 		return
-	if body is Player:
+	if body is Player and body.color_index != color:
+		SoundManager.play("Color%s" % color)
 		body.switch_color(color)
+		body.connect("color_change", func(_old, _new, _event): has_charge = true, CONNECT_ONE_SHOT)
+		has_charge = false
 
 # endregion

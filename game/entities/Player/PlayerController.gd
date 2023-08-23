@@ -75,10 +75,12 @@ func handle_inputs(event) -> void:
 	if event is InputEventKey and KeyMapping.is_jump_pressed(event):
 		if is_on_floor() or is_sticked:
 			velocity.y = JUMP_VELOCITY
+			SoundManager.play("Jump")
 			jump.emit(velocity)
 		elif color_index == Game.ColorIndex.DoubleJump:
 			switch_color(Game.ColorIndex.Default)
 			velocity.y = JUMP_VELOCITY
+			SoundManager.play("DoubleJump")
 			double_jump.emit(velocity)
 
 	# MOVE Action
@@ -93,6 +95,7 @@ func handle_inputs(event) -> void:
 		switch_color(Game.ColorIndex.Default)
 		dash_direction = direction.x
 		dash_energy = DASH_ENERGY
+		SoundManager.play("Dash")
 		dash.emit(velocity + Vector2(dash_energy * dash_direction, 0))
 		velocity.y = gravity * -0.25
 
