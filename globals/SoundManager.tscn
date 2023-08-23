@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://dhtcchaaeo7mv"]
 
 [ext_resource type="Script" path="res://globals/SoundManager.gd" id="1_8bm5r"]
-[ext_resource type="AudioStream" uid="uid://cccef06g763m" path="res://music/Pastel - Pastel Sunshine.ogg" id="2_4i8g4"]
-[ext_resource type="AudioStream" uid="uid://c3i5oskklga8j" path="res://music/Drop - Aim Assist.ogg" id="3_e6ypl"]
+[ext_resource type="AudioStream" uid="uid://bwopjqbsmhwxu" path="res://music/game_loop.ogg" id="2_r11ts"]
+[ext_resource type="AudioStream" uid="uid://bpxpf18lwlyd2" path="res://music/menu_loop.ogg" id="3_2x8n1"]
 
 [node name="SoundManager" type="Control"]
 process_mode = 3
@@ -20,12 +20,14 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="Menu" type="AudioStreamPlayer" parent="Music"]
-stream = ExtResource("2_4i8g4")
+stream = ExtResource("3_2x8n1")
 
 [node name="Gameplay" type="AudioStreamPlayer" parent="Music"]
-stream = ExtResource("3_e6ypl")
+stream = ExtResource("2_r11ts")
 
-[node name="Result" type="AudioStreamPlayer" parent="Music"]
+[node name="GameplayStart" type="AudioStreamPlayer" parent="Music"]
+
+[node name="MenuEnd" type="AudioStreamPlayer" parent="Music"]
 
 [node name="Effects" type="Control" parent="."]
 anchors_preset = 0
