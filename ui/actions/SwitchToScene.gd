@@ -22,4 +22,5 @@ const SceneFiles = [
 
 
 func _pressed() -> void:
+	SoundManager.play("Click")
 	get_tree().change_scene_to_file(SceneFiles[scene])

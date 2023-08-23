@@ -4,4 +4,5 @@ extends Button
 
 
 func _pressed() -> void:
+	SoundManager.play("Click")
 	LevelLoader.load_level(level)

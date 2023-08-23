@@ -6,7 +6,7 @@
 size = Vector2(32, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vj60w"]
-size = Vector2(40, 39)
+size = Vector2(31.75, 32.25)
 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 255
@@ -22,14 +22,5 @@ drag_vertical_enabled = true
 [node name="Sprite" type="Sprite2D" parent="."]
 texture = SubResource("PlaceholderTexture2D_r83gb")
 
-[node name="StickyDetector" type="Area2D" parent="."]
-collision_layer = 16
-collision_mask = 16
-
-[node name="Area" type="CollisionShape2D" parent="StickyDetector"]
-shape = SubResource("RectangleShape2D_vj60w")
-
 [node name="Collider" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_vj60w")
-
-[connection signal="body_entered" from="StickyDetector" to="." method="stick_to_wall"]

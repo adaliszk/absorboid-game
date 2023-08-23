@@ -1,8 +1,20 @@
-[gd_scene load_steps=4 format=3 uid="uid://dhtcchaaeo7mv"]
+[gd_scene load_steps=16 format=3 uid="uid://dhtcchaaeo7mv"]
 
 [ext_resource type="Script" path="res://globals/SoundManager.gd" id="1_8bm5r"]
 [ext_resource type="AudioStream" uid="uid://bwopjqbsmhwxu" path="res://music/game_loop.ogg" id="2_r11ts"]
 [ext_resource type="AudioStream" uid="uid://bpxpf18lwlyd2" path="res://music/menu_loop.ogg" id="3_2x8n1"]
+[ext_resource type="AudioStream" path="res://sounds/color_absorb1.ogg" id="4_vfwd4"]
+[ext_resource type="AudioStream" path="res://sounds/color_absorb2.ogg" id="5_qrew4"]
+[ext_resource type="AudioStream" path="res://sounds/color_absorb3.ogg" id="6_21204"]
+[ext_resource type="AudioStream" path="res://sounds/color_absorb4.ogg" id="7_n1h1q"]
+[ext_resource type="AudioStream" path="res://sounds/jump1.ogg" id="8_qs4xv"]
+[ext_resource type="Script" path="res://game/traits/RandomizeTracks.gd" id="9_s623y"]
+[ext_resource type="AudioStream" path="res://sounds/double_jump1.ogg" id="10_0iw25"]
+[ext_resource type="AudioStream" path="res://sounds/dash1.ogg" id="11_sv5xp"]
+[ext_resource type="AudioStream" path="res://sounds/land1.ogg" id="12_7tjgf"]
+[ext_resource type="AudioStream" uid="uid://bnlooq6frsnw1" path="res://sounds/click1.ogg" id="13_5csvm"]
+[ext_resource type="AudioStream" path="res://sounds/drawer_open.ogg" id="14_rkg6y"]
+[ext_resource type="AudioStream" path="res://sounds/drawer_close.ogg" id="15_tehve"]
 
 [node name="SoundManager" type="Control"]
 process_mode = 3
@@ -34,13 +46,37 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
+[node name="Color1" type="AudioStreamPlayer" parent="Effects"]
+stream = ExtResource("4_vfwd4")
+
+[node name="Color2" type="AudioStreamPlayer" parent="Effects"]
+stream = ExtResource("5_qrew4")
+
+[node name="Color3" type="AudioStreamPlayer" parent="Effects"]
+stream = ExtResource("6_21204")
+
+[node name="Color4" type="AudioStreamPlayer" parent="Effects"]
+stream = ExtResource("7_n1h1q")
+
 [node name="Jump" type="AudioStreamPlayer" parent="Effects"]
+stream = ExtResource("8_qs4xv")
+script = ExtResource("9_s623y")
+tracks = ["jump1", "jump2", "jump3"]
 
 [node name="DoubleJump" type="AudioStreamPlayer" parent="Effects"]
+stream = ExtResource("10_0iw25")
+script = ExtResource("9_s623y")
+tracks = ["double_jump1", "double_jump2"]
 
 [node name="Dash" type="AudioStreamPlayer" parent="Effects"]
+stream = ExtResource("11_sv5xp")
+script = ExtResource("9_s623y")
+tracks = ["dash1", "dash2"]
 
 [node name="Land" type="AudioStreamPlayer" parent="Effects"]
+stream = ExtResource("12_7tjgf")
+script = ExtResource("9_s623y")
+tracks = ["land1", "land2", "land3", "land4"]
 
 [node name="PaintSplash" type="AudioStreamPlayer" parent="Effects"]
 
@@ -66,9 +102,14 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="Click" type="AudioStreamPlayer" parent="UI"]
+stream = ExtResource("13_5csvm")
+script = ExtResource("9_s623y")
+tracks = ["click1", "click2", "click3", "click4", "click5", "click6"]
 
 [node name="Select" type="AudioStreamPlayer" parent="UI"]
 
-[node name="Open" type="AudioStreamPlayer" parent="UI"]
+[node name="DrawerOpen" type="AudioStreamPlayer" parent="UI"]
+stream = ExtResource("14_rkg6y")
 
-[node name="Close" type="AudioStreamPlayer" parent="UI"]
+[node name="DrawerClose" type="AudioStreamPlayer" parent="UI"]
+stream = ExtResource("15_tehve")

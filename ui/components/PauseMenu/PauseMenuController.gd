@@ -6,6 +6,7 @@ signal drawer_toggled(state: bool)
 @export var opened: bool = false:
 	set(value):
 		opened = value
+		SoundManager.play("DrawerOpen" if value else "DrawerClose")
 		get_tree().paused = value
 		render()
 
