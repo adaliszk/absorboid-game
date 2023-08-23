@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://ca7cfbyv3mpst"]
+[gd_scene load_steps=8 format=3 uid="uid://ca7cfbyv3mpst"]
 
 [ext_resource type="PackedScene" uid="uid://dmwloprpiyah0" path="res://ui/BottomPanel.tscn" id="1_6oece"]
 [ext_resource type="Script" path="res://ui/scripts/RenderLabelContent.gd" id="1_f5gxf"]
 [ext_resource type="Script" path="res://ui/actions/SwitchToScene.gd" id="2_attn7"]
 [ext_resource type="Script" path="res://ui/actions/QuitGame.gd" id="2_dhvic"]
 [ext_resource type="PackedScene" uid="uid://b18l1f52smrku" path="res://ui/traits/HideOnWebPlatform.tscn" id="3_i0337"]
+[ext_resource type="Script" path="res://ui/traits/OpenLinksOnWeb.gd" id="5_w352e"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_788t1"]
 
@@ -89,5 +90,26 @@ alignment = 0
 script = ExtResource("2_dhvic")
 
 [node name="HideOnWebPlatform" parent="Viewport/MainMenu/Layout/Exit" instance=ExtResource("3_i0337")]
+
+[node name="CreditNotes" type="VBoxContainer" parent="Viewport"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+
+[node name="Credits" type="RichTextLabel" parent="Viewport/CreditNotes"]
+texture_filter = 1
+custom_minimum_size = Vector2(240, 140)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 10
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 11
+bbcode_enabled = true
+text = "Made by:
+Design, Louka Moroni: [url=https://itch.io/profile/loukamoroni]@loukaMoroni​​​​[/url]
+Music, Loxo High Score: [url=https://twitter.com/LoxoHighScore]@LoxoHighScore​​​​[/url]
+Sound Effects: Oliver Lewis: [url=https://olaudio.itch.io]@OLAudio[/url]
+Programming, Ádám Liszkai: [url=https://github.com/adaliszk]@AdaLiszk[/url]"
+script = ExtResource("5_w352e")
 
 [node name="BottomPanel" parent="." instance=ExtResource("1_6oece")]
