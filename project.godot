@@ -16,7 +16,7 @@ run/main_scene="res://scenes/Main.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
 run/low_processor_mode=true
 boot_splash/bg_color=Color(1, 1, 1, 1)
-config/icon="res://icon.svg"
+config/icon="res://icon.png"
 
 [autoload]
 
