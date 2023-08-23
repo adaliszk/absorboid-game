@@ -1,7 +1,7 @@
 extends Control
 
 enum Channel { Music, Effects, UI, Master }
-enum Music { Menu, Gameplay, Result }
+enum Music { Menu, Gameplay }
 
 @export_range(0.0, 1.0) var master_volume: float = 0.5:
 	set(value):
@@ -61,9 +61,8 @@ func _process(delta) -> void:
 			music_crossfade1.stop()
 			music_crossfade1 = null
 	if music_crossfade2 != null:
-		music_crossfade2.volume_db += delta * 60
-		if music_crossfade2.volume_db >= music_volume:
-			music_crossfade2.volume_db = _volume_to_db(music_volume)
+		music_crossfade2.volume_db += max(delta * 60, _volume_to_db(music_volume))
+		if music_crossfade2.volume_db >= _volume_to_db(music_volume):
 			music_player = music_crossfade2
 			music_crossfade2 = null
 
