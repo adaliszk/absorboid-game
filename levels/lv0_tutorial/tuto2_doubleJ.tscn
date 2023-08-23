@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://c5tcgynbr45wq"]
+[gd_scene load_steps=9 format=3 uid="uid://c5tcgynbr45wq"]
 
 [ext_resource type="TileSet" uid="uid://dx2d4lqdb7qg2" path="res://game/assets/sandbox_packed.tres" id="1_g8otr"]
+[ext_resource type="Script" path="res://globals/StageController.gd" id="1_wdfiq"]
 [ext_resource type="PackedScene" uid="uid://dq7hdnxtl2ru" path="res://game/interactables/ColorChanger.tscn" id="2_1jo0o"]
 [ext_resource type="PackedScene" uid="uid://cdltiu2pshqsp" path="res://ui/components/TooltipBubble/TooltipBubble.tscn" id="3_7fiha"]
 [ext_resource type="PackedScene" uid="uid://c8tiu4yx6b378" path="res://game/traits/ShowOnlyForDebug.tscn" id="4_fl6im"]
@@ -9,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://c3e7l126blnup" path="res://game/entities/Player/Player.tscn" id="6_ad6ap"]
 
 [node name="tuto2DoubleJ" type="Node2D"]
+script = ExtResource("1_wdfiq")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource("1_g8otr")
@@ -52,3 +54,5 @@ position = Vector2(536, 408)
 
 [node name="Player" parent="." instance=ExtResource("6_ad6ap")]
 position = Vector2(454, 585)
+
+[connection signal="body_entered" from="TileMap/StageEnd" to="." method="trigger_success"]

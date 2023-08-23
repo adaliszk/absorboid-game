@@ -60,4 +60,6 @@ color = 2
 position = Vector2(1448, -824)
 
 [node name="Player" parent="." instance=ExtResource("5_at35u")]
-position = Vector2(1139, -88)
+position = Vector2(-390, 605)
+
+[connection signal="body_entered" from="TileMap/StageEnd" to="." method="trigger_success"]
