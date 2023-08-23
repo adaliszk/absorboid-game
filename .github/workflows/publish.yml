@@ -72,6 +72,12 @@ jobs:
         with:
           name: ${{ matrix.export }}-v${{ github.run_number }}
           path: ./build/${{ matrix.export }}/*
+      -
+        name: 📁 Upload Distribution info
+        uses: actions/upload-artifact@v3
+        with:
+          name: DistInfo
+          path: ./dist/*
 
   publish:
     name: "Publish"
@@ -97,6 +103,11 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: ${{ matrix.export }}-v${{ github.run_number }}
+      -
+        name: 📁 Download Distribution Info
+        uses: actions/download-artifact@v3
+        with:
+          name: DistInfo
       -
         name: 🔬 Verify Files
         run: |
