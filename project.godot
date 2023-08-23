@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="godot-jamegam31"
+config/name="Absorboid"
 config/tags=PackedStringArray("gamejam")
 run/main_scene="res://scenes/Main.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
