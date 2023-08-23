@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://su6dc2wnm1lv"]
+[gd_scene load_steps=9 format=3 uid="uid://cqn1ifw0hqu3b"]
 
 [ext_resource type="Script" path="res://globals/StageController.gd" id="1_m0jon"]
 [ext_resource type="TileSet" uid="uid://dx2d4lqdb7qg2" path="res://game/assets/sandbox_packed.tres" id="1_rv6bn"]
